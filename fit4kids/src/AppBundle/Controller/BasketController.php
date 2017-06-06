@@ -26,70 +26,12 @@ class BasketController extends Controller
         $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
         $user = $repo->find($id);
         $userBasket = $user->getBasket();
+        $coursesInBasket = $userBasket->getCourses();
 
         return $this->render('basket/show.html.twig', array(
             'basket' => $userBasket
+            'courses' => $coursesInBasket;
         ));
     }
 
-    /**
-     * Displays a form to edit an existing course entity.
-     *
-     * @Route("/{id}/edit", name="course_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Course $course)
-    {
-        $deleteForm = $this->createDeleteForm($course);
-        $editForm = $this->createForm('AppBundle\Form\CourseType', $course);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('course_edit', array('id' => $course->getId()));
-        }
-
-        return $this->render('course/edit.html.twig', array(
-            'course' => $course,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Deletes a course entity.
-     *
-     * @Route("/{id}", name="course_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Course $course)
-    {
-        $form = $this->createDeleteForm($course);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($course);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('course_index');
-    }
-
-    /**
-     * Creates a form to delete a course entity.
-     *
-     * @param Course $course The course entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Course $course)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('course_delete', array('id' => $course->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }
