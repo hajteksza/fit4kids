@@ -18,20 +18,23 @@ class BasketController extends Controller
     /**
      * Finds and displays a basket entity.
      *
-     * @Route("/{id}", name="basket_show")
+     * @Route("/", name="basket_show")
      * @Method("GET")
      */
-    public function showAction($id, Request $req)
+    public function showAction()
     {
-        $basketRepo = $this->getDoctrine()->getRepository('AppBundle:Basket');
-        $basket = $basketRepo->find($id);
-        $basket = $basketRepo->find($id);
-        $coursesInBasket = $basket->getCourses();
-
+        $basket = $this->findLoggedUserBasket();
+        $courses = $basket->getCourses();
+        
         return $this->render('basket/show.html.twig', array(
             'basket' => $basket,
-            'courses' => $coursesInBasket
+            'courses' => $courses
         ));
+    }
+    
+    public function findLoggedUserBasket(){
+        $user = $this->getUser();
+        return $user->getBasket();
     }
 
 }
