@@ -16,5 +16,6 @@
 - Strona o mnie
 - Strona koszyka z listą kursów dodanych do koszyka oraz statusem kursów.
 - Strona moich kursów z możliwością obejrzenia zakupionych filmów. Po wybraniu filmu, strona przeładowuje się przez Ajax
+- Slider ze zdjęciami tytułowymi kursów.
 - Logowanie poprzez formularz w nagłówku strony.
 - Strona rejestracji.

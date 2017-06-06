@@ -56,9 +56,23 @@ class Movie
 
     protected $ratings;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="movies")
+     */
+
+    protected $users;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="movie")
+     */
+
+    protected $comments;
+
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -200,5 +214,73 @@ class Movie
     public function getRatings()
     {
         return $this->ratings;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Movie
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     *
+     * @return Movie
+     */
+    public function addComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

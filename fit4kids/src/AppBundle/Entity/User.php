@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
+
 class User extends BaseUser
 {
     /**
@@ -37,6 +38,13 @@ class User extends BaseUser
     protected $likes;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Movie", inversedBy="users")
+     * @JoinTable(name="movies_users")
+     */
+
+    protected $movies;
+
+    /**
      * @ORM\OneToOne(targetEntity="Basket", mappedBy="user")
      */
 
@@ -49,6 +57,12 @@ class User extends BaseUser
     protected $ratings;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     */
+
+    protected $comments;
+
+    /**
      * @ORM\Column(type="integer")
      */
 
@@ -59,6 +73,7 @@ class User extends BaseUser
         parent::__construct();
         $this->courses = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -209,5 +224,73 @@ class User extends BaseUser
     public function getPoints()
     {
         return $this->points;
+    }
+
+    /**
+     * Add movie
+     *
+     * @param \AppBundle\Entity\Movies $movie
+     *
+     * @return User
+     */
+    public function addMovie(\AppBundle\Entity\Movies $movie)
+    {
+        $this->movies[] = $movie;
+
+        return $this;
+    }
+
+    /**
+     * Remove movie
+     *
+     * @param \AppBundle\Entity\Movies $movie
+     */
+    public function removeMovie(\AppBundle\Entity\Movies $movie)
+    {
+        $this->movies->removeElement($movie);
+    }
+
+    /**
+     * Get movies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMovies()
+    {
+        return $this->movies;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
