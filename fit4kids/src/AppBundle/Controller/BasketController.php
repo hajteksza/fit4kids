@@ -21,16 +21,16 @@ class BasketController extends Controller
      * @Route("/{id}", name="basket_show")
      * @Method("GET")
      */
-    public function showAction(Basket $basket)
+    public function showAction($id, Request $req)
     {
-        $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
-        $user = $repo->find($id);
-        $userBasket = $user->getBasket();
-        $coursesInBasket = $userBasket->getCourses();
+        $basketRepo = $this->getDoctrine()->getRepository('AppBundle:Basket');
+        $basket = $basketRepo->find($id);
+        $basket = $basketRepo->find($id);
+        $coursesInBasket = $basket->getCourses();
 
         return $this->render('basket/show.html.twig', array(
-            'basket' => $userBasket
-            'courses' => $coursesInBasket;
+            'basket' => $basket,
+            'courses' => $coursesInBasket
         ));
     }
 
