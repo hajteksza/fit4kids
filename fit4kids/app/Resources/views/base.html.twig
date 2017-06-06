@@ -16,7 +16,6 @@
     {% block navbar %}
         <nav class="navbar navbar-default navbar-inverse" role="navigation">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
@@ -25,57 +24,67 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Login dropdown</a>
+                    <a class="navbar-brand" href="/">Nazwa firmy</a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
+                        <li><a href="/">Kursy</a></li>
                     </ul>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><p class="navbar-text">Masz już konto?</p></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Zaloguj się</b> <span
-                                        class="caret"></span></a>
-                            <ul id="login-dp" class="dropdown-menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form class="form" role="form" method="post" action="login"
-                                                  accept-charset="UTF-8" id="login-nav">
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputEmail2">Nazwa
-                                                        użytkownika:</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail2"
-                                                           placeholder="Nazwa użytkownika" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputPassword2">Hasło:</label>
-                                                    <input type="password" class="form-control"
-                                                           id="exampleInputPassword2" placeholder="Hasło" required>
-                                                    <div class="help-block text-right"><a href="">Zapomniałeś hasła?
-                                                        </a></div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Zaloguj się
-                                                    </button>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> zapamiętaj mnie
-                                                    </label>
-                                                </div>
-                                            </form>
+                        {% if not app.user %}
+                            <li><p class="navbar-text">Masz już konto?</p></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Zaloguj się</b> <span
+                                            class="caret"></span></a>
+                                <ul id="login-dp" class="dropdown-menu">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form class="form" role="form" method="post" action="login"
+                                                      accept-charset="UTF-8" id="login-nav">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="exampleInputEmail2">Nazwa
+                                                            użytkownika:</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail2"
+                                                               placeholder="Nazwa użytkownika" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="sr-only"
+                                                               for="exampleInputPassword2">Hasło:</label>
+                                                        <input type="password" class="form-control"
+                                                               id="exampleInputPassword2" placeholder="Hasło" required>
+                                                        <div class="help-block text-right"><a href="">Zapomniałeś hasła?
+                                                            </a></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-primary btn-block">Zaloguj
+                                                            się
+                                                        </button>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"> zapamiętaj mnie
+                                                        </label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="bottom text-center">
+                                                Nie masz jeszcze konta? <a href="/register"><b>Zarejestruj się</b></a>
+                                            </div>
                                         </div>
-                                        <div class="bottom text-center">
-                                            Nie masz jeszcze konta? <a href="/register"><b>Zarejestruj się</b></a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        {% if app.user %}
+                            <li><a href="#">Twoje konto</a></li>
+                            <li><a href="/logout">Wyloguj się</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="/admin">Panel administratora</a></li>
+                        {% endif %}
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
