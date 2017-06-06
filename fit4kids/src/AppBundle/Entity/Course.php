@@ -51,6 +51,11 @@ class Course
     private $likes;
 
     /**
+     * @ORM\Column(name="picture", type="string", length=255)
+     */
+    private $picture;
+
+    /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="courses")
      */
 
@@ -321,5 +326,29 @@ class Course
     public function getMovies()
     {
         return $this->movies;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Course
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
