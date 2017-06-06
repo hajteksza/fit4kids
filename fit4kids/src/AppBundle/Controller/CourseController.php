@@ -117,6 +117,11 @@ class CourseController extends Controller
 
         return $this->redirectToRoute('course_index');
     }
+    
+    public function payAction(Request $req, Course $course)
+    {
+        $userRepo = 1;
+    }
 
     /**
      * Creates a form to delete a course entity.
