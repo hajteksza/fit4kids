@@ -18,7 +18,7 @@ class BasketController extends Controller
     /**
      * Finds and displays a basket entity.
      *
-     * @Route("/{id}", name="basket_show")
+     * @Route("/", name="basket_show")
      * @Method("GET")
      */
     public function showAction()
