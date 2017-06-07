@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Course;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -59,6 +60,20 @@ class CourseController extends Controller
         ));
     }
 
+     /**
+     * @Route("/myCourses", name="my_courses")
+     * @Method({"GET", "POST"})
+     */
+    public function myCoursesAction(Request $request)
+    {
+        $user = $this->getUser();
+        $courses = $user->getCourses();
+         return $this->render('course/my_courses.html.twig', array(
+            'courses' => $courses
+        ));
+        
+    }
+    
     /**
      * Finds and displays a course entity.
      *
@@ -99,6 +114,7 @@ class CourseController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
 
     /**
      * Deletes a course entity.

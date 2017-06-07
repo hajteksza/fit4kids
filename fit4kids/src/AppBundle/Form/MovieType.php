@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Entity\Course;
 
 class MovieType extends AbstractType
 {
@@ -13,7 +14,7 @@ class MovieType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('description')->add('path')->add('course');
+        $builder->add('title')->add('description')->add('path');
     }
     
     /**
