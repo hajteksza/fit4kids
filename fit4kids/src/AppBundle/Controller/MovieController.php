@@ -58,22 +58,45 @@ class MovieController extends Controller
     }
     
      /**
-     * @Route("/courseMovies", name="course_movies")
-     * @Method("GET")
+     * @Route("/courseMovies/{id}", name="course_movies")
      */
-    public function courseMoviesAction()
-    {
+    public function courseMoviesAction(Request $req, $id)
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $course = $em->getRepository('AppBundle:Course')->find($id);
         $user = $this->getUser();
-        $courses = $user->getCourses();
-        $movies = [];
-        foreach($courses as $course){
-            $movies[$course->getId()] = $course->getMovies();
+        $userCourses = [];
+        foreach ($user->getCourses() as $userCourse){
+            $userCourses[] = $userCourse;
         }
-        return $this->render('movie/course_movies.html.twig', array(
-            'movies' => $movies,
-        ));
+        if (in_array ($course , $userCourses)){
+            $i=0;
+                foreach($course->getMovies() as $movie){
+                    $movies[$i]['id'] = $movie->getId();
+                    $movies[$i]['title'] = $movie->getTitle();
+                    $movies[$i]['description'] = $movie->getTitle();
+                    $movies[$i]['path'] = $movie->getPath();
+                    $i++;
+                }
+            return $this->render('movie/course_movies.html.twig', array(
+                'movies' => $movies,
+            ));
+        }
     }
-
+    
+     /**
+     * @Route("/getMoviePath", name="movie_path")
+     */
+    public function getMoviePathAction(Request $req)
+    {
+        if(null !== $req->query->get('id')){
+            $id = $req->query->get('id');
+            $movieRepo = $this->getDoctrine()->getRepository('AppBundle:Movie');
+            $moviePath = $movieRepo->find($id)->getPath();
+            return new \Symfony\Component\HttpFoundation\JsonResponse(["path"=>$moviePath]);
+        }        
+    }
+    
     /**
      * Finds and displays a movie entity.
      *
