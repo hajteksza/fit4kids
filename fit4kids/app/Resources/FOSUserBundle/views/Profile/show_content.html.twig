@@ -5,13 +5,29 @@
     <div class="fos_user_user_show">
         <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
         <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-        <a href="/profile/edit" class="btn btn-default">Edytuj dane</a>
-        <div style="margin-top:10px; margin-bottom: 10px;">
-            <a href="/profile/change-password" class="btn btn-default">Zmień hasło</a>
-        </div>
         <div style="margin-top: 10px">
-            <p>Stan portfela: {{ user.points }}</p>
-            <a href="/basket" class="btn btn-default">Koszyk użytkownika</a>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Edytuj dane</a></li>
+            <li><a data-toggle="tab" href="#menu1">Zmień hasło</a></li>
+            <li><a data-toggle="tab" href="#menu2">Koszyk</a></li>
+        </ul>
+
+        <div class="tab-content" style="margin-top: 10px">
+            <div id="home" class="tab-pane fade in active" style="margin-top: 10px;">
+                {{ render(controller(
+                'FOSUserBundle:Profile:edit'
+                )) }}
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                {{ render(controller(
+                'FOSUserBundle:ChangePassword:changePassword'
+                )) }}
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <p>tutaj będzie koszyk</p>
+            </div>
         </div>
     </div>
 {% endblock %}
