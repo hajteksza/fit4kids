@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Your Basket</h1>
+    <hr>
+    {%for course in courses%}
+    <ul>
+        <li>
+            Id: {{course.id}}
+        </li>
+        <li>
+            Title: {{course.title}}
+        </li>
+        <li>
+            Description: {{course.title}}
+        </li>
+        <li>
+            Price: {{course.price}} <a href="/course/{{course.id}}/pay">Pay</a>
+        </li>
+    </ul>
+    <hr>
+    {%endfor%}
+{% endblock %}

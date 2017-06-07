@@ -229,11 +229,11 @@ class User extends BaseUser
     /**
      * Add movie
      *
-     * @param \AppBundle\Entity\Movies $movie
+     * @param \AppBundle\Entity\Movie $movie
      *
      * @return User
      */
-    public function addMovie(\AppBundle\Entity\Movies $movie)
+    public function addMovie(\AppBundle\Entity\Movie $movie)
     {
         $this->movies[] = $movie;
 
@@ -245,7 +245,7 @@ class User extends BaseUser
      *
      * @param \AppBundle\Entity\Movies $movie
      */
-    public function removeMovie(\AppBundle\Entity\Movies $movie)
+    public function removeMovie(\AppBundle\Entity\Movie $movie)
     {
         $this->movies->removeElement($movie);
     }
