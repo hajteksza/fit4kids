@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Movies list</h1>
+    <h1>Kurs: {{courseTitle}}</h1>
     {% for movie in movies %}
+    <hr>
     <table>
         <thead>
             <tr>
@@ -19,6 +20,7 @@
         
         </tbody>
     </table>
+    <hr>
     {% endfor %}
     <div id="videoDiv">
         <video width="320" height="240" controls>

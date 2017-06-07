@@ -64,6 +64,7 @@ class MovieController extends Controller
     {   
         $em = $this->getDoctrine()->getManager();
         $course = $em->getRepository('AppBundle:Course')->find($id);
+        $courseTitle = $course->getTitle();
         $user = $this->getUser();
         $userCourses = [];
         foreach ($user->getCourses() as $userCourse){
@@ -80,6 +81,7 @@ class MovieController extends Controller
                 }
             return $this->render('movie/course_movies.html.twig', array(
                 'movies' => $movies,
+                'courseTitle' => $courseTitle
             ));
         }
     }

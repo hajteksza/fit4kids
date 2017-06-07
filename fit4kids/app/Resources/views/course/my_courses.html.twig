@@ -1,36 +1,28 @@
-{% extends 'base.html.twig' %}
-
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h1>My Courses</h1>
-
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Rating</th>
-                        <th>Actions</th>
+                        <th>Tytuł</th>
+                        <th>Opis</th>
+                        <th>Likes</th>
+                        
                     </tr>
                     </thead>
                     <tbody>
                     {% for course in courses %}
                         <tr>
-                            <td><a href="{{ path('course_show', { 'id': course.id }) }}">{{ course.id }}</a></td>
                             <td>{{ course.title }}</td>
                             <td>{{ course.description }}</td>
-                            <td>{{ course.price }}</td>
-                            <td>{{ course.id }}</td>
+                            <td>{{ course.likes }}</td>
                             <td>
                                 <ul>
                                     <li>
-                                        <a href="{{ path('course_show', { 'id': course.id }) }}">show</a>
+                                        <a href="{{ path('course_movies', { 'id': course.id }) }}">przejdż do filmów</a>
                                     </li>
                                 </ul>
                             </td>

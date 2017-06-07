@@ -414,9 +414,9 @@ class AdminController extends Controller {
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
-                $file = $course->getPath();
+                $file = $course->getPicture();
                 $newPath = $file->move("web/Assets/images/", $file->getClientOriginalName());
-                $course->setPath($newPath);
+                $course->setPicture($newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($course);
                 $em->flush();

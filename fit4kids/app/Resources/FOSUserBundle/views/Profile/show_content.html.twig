@@ -14,6 +14,7 @@
             <li><a data-toggle="tab" href="#menu1">Zmień hasło</a></li>
             <li><a data-toggle="tab" href="#menu2">Edytuj dane</a></li>
             <li><a data-toggle="tab" href="#menu3">Dodaj punkty</a></li>
+            <li><a data-toggle="tab" href="#menu4">Twoje Kursy</a></li>
         </ul>
 
         <div class="tab-content" style="margin-top: 10px">
@@ -51,6 +52,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="menu4" class="tab-pane fade">
+                {{ render(controller(
+                'AppBundle:Course:myCourses'
+                )) }}
             </div>
         </div>
     </div>
