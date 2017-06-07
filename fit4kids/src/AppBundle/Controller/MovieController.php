@@ -59,21 +59,41 @@ class MovieController extends Controller
     
      /**
      * @Route("/courseMovies", name="course_movies")
-     * @Method("GET")
      */
-    public function courseMoviesAction()
-    {
+    public function courseMoviesAction(Request $req)
+    {   
         $user = $this->getUser();
         $courses = $user->getCourses();
         $movies = [];
+        $i=0;
         foreach($courses as $course){
-            $movies[$course->getId()] = $course->getMovies();
+            foreach($course->getMovies() as $movie){
+                $movies[$i]['id'] = $movie->getId();
+                $movies[$i]['title'] = $movie->getTitle();
+                $movies[$i]['description'] = $movie->getTitle();
+                $movies[$i]['path'] = $movie->getPath();
+                $i++;
+            }
         }
         return $this->render('movie/course_movies.html.twig', array(
             'movies' => $movies,
         ));
+        
     }
-
+    
+     /**
+     * @Route("/getMoviePath", name="movie_path")
+     */
+    public function getMoviePathAction(Request $req)
+    {
+        if(null !== $req->query->get('id')){
+            $id = $req->query->get('id');
+            $movieRepo = $this->getDoctrine()->getRepository('AppBundle:Movie');
+            $moviePath = $movieRepo->find($id)->getPath();
+            return new \Symfony\Component\HttpFoundation\JsonResponse(["path"=>$moviePath]);
+        }        
+    }
+    
     /**
      * Finds and displays a movie entity.
      *
