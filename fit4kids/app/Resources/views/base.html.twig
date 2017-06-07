@@ -6,10 +6,9 @@
 
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleBase.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% block head %}{% endblock %}
 </head>
 <body>
 <div class="navbar">
@@ -28,7 +27,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/">Kursy</a></li>
+                        <li><a href="/course/">Kursy</a></li>
                     </ul>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
