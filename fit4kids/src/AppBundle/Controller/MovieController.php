@@ -76,6 +76,8 @@ class MovieController extends Controller
                     $movies[$i]['id'] = $movie->getId();
                     $movies[$i]['title'] = $movie->getTitle();
                     $movies[$i]['description'] = $movie->getTitle();
+                    $movies[$i]['avgRating'] = $movie->getAverageRating();
+                    $movies[$i]['ratingCount'] = count($movie->getRatings());
                     $movies[$i]['path'] = $movie->getPath();
                     $i++;
                 }

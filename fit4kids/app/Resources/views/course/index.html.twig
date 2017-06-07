@@ -6,7 +6,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h1>Courses list</h1>
+                <h1>Lista Kursów</h1>
 
                 <table class="table table-bordered">
                     <thead>
@@ -15,7 +15,6 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>Likes</th>
-                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,10 +25,7 @@
                             <td>{{ course.price }}</td>
                             <td>{{ course.likes }}</td>
                             <td>
-                                <ul>
-                                    <li><a href="{{ path('course_show', { 'id': course.id }) }}">show</a></li>
-                                    <li><a href="addToBasket/{{ course.id }}">Dodaj do koszyka</a></li>
-                                </ul>
+                                <a class="btn btn-default" href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
                             </td>
                         </tr>
                     {% endfor %}

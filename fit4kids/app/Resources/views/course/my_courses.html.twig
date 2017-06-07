@@ -20,11 +20,7 @@
                             <td>{{ course.description }}</td>
                             <td>{{ course.likes }}</td>
                             <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('course_movies', { 'id': course.id }) }}">przejdż do filmów</a>
-                                    </li>
-                                </ul>
+                                <a class="btn btn-default" href="{{ path('course_movies', { 'id': course.id }) }}">przejdż do filmów</a>
                             </td>
                         </tr>
                     {% endfor %}
