@@ -1,4 +1,7 @@
+
+*~
 /web/bundles
+
 /.web-server-pid
 /app/config/parameters.yml
 /build/
@@ -17,5 +20,3 @@
 /vendor/
 /web/bundles/
 /web/bootstrap
-*~
-
