@@ -13,9 +13,13 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Carousel');
+        $carousels = $repo->findAll();
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'carousels' => $carousels,
+            'i' => 0
         ]);
     }
+    
+    
 }
