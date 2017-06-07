@@ -6,9 +6,7 @@ use AppBundle\Entity\Course;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Course controller.
@@ -136,39 +134,40 @@ class CourseController extends Controller
         return $this->redirectToRoute('course_index');
     }
 
-        /**
+    /**
      * @Route("/pay/{id}", name="course_pay")
      */
     public function payAction(Request $req, $id)
     {
 
-  try {
-        $user = $this->getUser();
-        $basket = $user->getBasket();
-        $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course');
-        $course = $courseRepo->find($id);
-        $pointsAfterPay = intval($user->getPoints()) - intval($course->getPrice());
-        if ($pointsAfterPay >= 0) {
+        try {
+            $user = $this->getUser();
             $basket = $user->getBasket();
-            $basket->removeCourse($course);
-            $course->removeBasket($basket);
-            $course->addUser($user);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($basket);
-            $em->persist($course);
-            $em->flush();
-            $user->addCourse($course);
-            $user->setPoints($pointsAfterPay);
-            $userManager = $this->get('fos_user.user_manager');
-            $userManager->updateUser($user);
-            return $this->render('course/buy.html.twig');
-        } else {
-            return $this->render('course/buy_error.html.twig');
-          } catch (\Exception $e) {
+            $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course');
+            $course = $courseRepo->find($id);
+            $pointsAfterPay = intval($user->getPoints()) - intval($course->getPrice());
+            if ($pointsAfterPay >= 0) {
+                $basket = $user->getBasket();
+                $basket->removeCourse($course);
+                $course->removeBasket($basket);
+                $course->addUser($user);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($basket);
+                $em->persist($course);
+                $em->flush();
+                $user->addCourse($course);
+                $user->setPoints($pointsAfterPay);
+                $userManager = $this->get('fos_user.user_manager');
+                $userManager->updateUser($user);
+                return $this->render('course/buy.html.twig');
+            } else {
+                return $this->render('course/buy_error.html.twig');
+            }
+        } catch (\Exception $e) {
             return $this->render('course/buy_database_error.html.twig');
         }
     }
-    
+
 
     /**
      * Creates a form to delete a course entity.
@@ -208,17 +207,18 @@ class CourseController extends Controller
             $em->persist($basket);
             $em->flush();
             return $this->render('/basket/addedToBasket.html.twig');
-        } catch (\Exception $e) {
+        } catch ( \Exception $e) {
             return $this->render('/basket/errorBasket.html.twig');
         }
     }
-    
-    public function getTotalPrice($basket){
-        $totalPrice=0;
-        if(empty($basket->getCourses)){
+
+    public function getTotalPrice($basket)
+    {
+        $totalPrice = 0;
+        if (empty($basket->getCourses)) {
             return null;
         }
-        foreach ($basket->getCourses() as $course){
+        foreach ($basket->getCourses() as $course) {
             $totalPrice += intval($course->getPrice());
         }
         return $totalPrice;
