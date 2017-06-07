@@ -34,11 +34,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/basket/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+            <state relative-caret-position="390">
+              <caret line="26" column="88" lean-forward="false" selection-start-line="26" selection-start-column="88" selection-end-line="26" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="163" column="38" lean-forward="false" selection-start-line="163" selection-start-column="38" selection-end-line="163" selection-end-column="38" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasketController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buy_database_error.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -48,28 +80,12 @@
         <entry file="file://$PROJECT_DIR$/app/Resources/views/movie/course_movies.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="265">
-              <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="showMovies.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/bundles/app/js/showMovies.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/movie/show.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="30" lean-forward="false" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-              <folding />
+              <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+              <folding>
+                <marker date="1496872407000" expanded="true" signature="88:189" ph="{% for movie in movies ...%}" />
+                <marker date="1496872407000" expanded="true" signature="1264:1281" ph="..." />
+                <marker date="1496872407000" expanded="true" signature="1264:1292" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,16 +95,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="buy_database_error.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="64" lean-forward="false" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -169,7 +175,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/course/buy_error.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/show.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/addedToBasket.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/errorBasket.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/show_admin_carousel.html.twig" />
@@ -182,12 +187,13 @@
         <option value="$PROJECT_DIR$/web/css/styleBase.css" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/movie/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/movie/course_movies.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/basket/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig" />
       </list>
     </option>
   </component>
@@ -242,6 +248,74 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,33 +391,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fit4kids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fit4kids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basket" />
+              <option name="myItemId" value="course" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -805,12 +853,12 @@
       <workItem from="1496741211316" duration="4730000" />
       <workItem from="1496748793187" duration="299000" />
       <workItem from="1496750545043" duration="38234000" />
-      <workItem from="1496852721629" duration="4650000" />
+      <workItem from="1496852721629" duration="5204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47913000" />
+    <option name="totallyTimeSpent" value="48467000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="828" extended-state="0" />
@@ -1127,36 +1175,26 @@
         <state relative-caret-position="27">
           <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="12" />
           <folding>
-            <marker date="1496863002000" expanded="true" signature="1662:2606" ph="{...}" />
-            <marker date="1496863002000" expanded="true" signature="2574:2587" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="2574:2588" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="2574:2599" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="2620:2676" ph=" @Route(&quot;/getMoviePath&quot;, name=&quot;movie_path&quot;) ..." />
-            <marker date="1496863002000" expanded="true" signature="2731:3081" ph="{...}" />
-            <marker date="1496863002000" expanded="true" signature="2782:3066" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="3094:3213" ph=" Finds and displays a movie entity. ..." />
-            <marker date="1496863002000" expanded="true" signature="3260:3487" ph="{...}" />
-            <marker date="1496863002000" expanded="true" signature="3352:3479" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="3382:3478" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="3496:3645" ph=" Displays a form to edit an existing movie entity. ..." />
-            <marker date="1496863002000" expanded="true" signature="3710:4330" ph="{...}" />
-            <marker date="1496863002000" expanded="true" signature="3955:4111" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="4143:4322" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="4173:4321" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="4339:4452" ph=" Deletes a movie entity. ..." />
-            <marker date="1496863002000" expanded="true" signature="4519:4855" ph="{...}" />
-            <marker date="1496863002000" expanded="true" signature="4671:4793" ph="..." />
-            <marker date="1496863002000" expanded="true" signature="4869:5034" ph=" Creates a form to delete a movie entity. ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="41" column="1" lean-forward="false" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <marker date="1496872407000" expanded="true" signature="1662:2759" ph="{...}" />
+            <marker date="1496872407000" expanded="true" signature="2727:2740" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="2727:2741" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="2727:2752" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="2773:2829" ph=" @Route(&quot;/getMoviePath&quot;, name=&quot;movie_path&quot;) ..." />
+            <marker date="1496872407000" expanded="true" signature="2884:3234" ph="{...}" />
+            <marker date="1496872407000" expanded="true" signature="2935:3219" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="3247:3366" ph=" Finds and displays a movie entity. ..." />
+            <marker date="1496872407000" expanded="true" signature="3413:3640" ph="{...}" />
+            <marker date="1496872407000" expanded="true" signature="3505:3632" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="3535:3631" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="3649:3798" ph=" Displays a form to edit an existing movie entity. ..." />
+            <marker date="1496872407000" expanded="true" signature="3863:4483" ph="{...}" />
+            <marker date="1496872407000" expanded="true" signature="4108:4264" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="4296:4475" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="4326:4474" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="4492:4605" ph=" Deletes a movie entity. ..." />
+            <marker date="1496872407000" expanded="true" signature="4672:5008" ph="{...}" />
+            <marker date="1496872407000" expanded="true" signature="4824:4946" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="5022:5187" ph=" Creates a form to delete a movie entity. ..." />
           </folding>
         </state>
       </provider>
@@ -1178,22 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="166" column="72" lean-forward="false" selection-start-line="166" selection-start-column="72" selection-end-line="166" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="64" lean-forward="false" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -1241,8 +1263,12 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/movie/course_movies.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
-          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding />
+          <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding>
+            <marker date="1496872407000" expanded="true" signature="88:189" ph="{% for movie in movies ...%}" />
+            <marker date="1496872407000" expanded="true" signature="1264:1281" ph="..." />
+            <marker date="1496872407000" expanded="true" signature="1264:1292" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1266,8 +1292,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/basket/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        <state relative-caret-position="390">
+          <caret line="26" column="88" lean-forward="false" selection-start-line="26" selection-start-column="88" selection-end-line="26" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="163" column="38" lean-forward="false" selection-start-line="163" selection-start-column="38" selection-end-line="163" selection-end-column="38" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding />
         </state>
       </provider>
