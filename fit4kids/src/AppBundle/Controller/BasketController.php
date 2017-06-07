@@ -6,9 +6,7 @@ use AppBundle\Entity\Basket;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Basket controller.
@@ -33,10 +31,10 @@ class BasketController extends Controller
             'courses' => $courses
         ));
     }
-
-    public function findLoggedUserBasket()
-    {
+    
+    public function findLoggedUserBasket(){
         $user = $this->getUser();
         return $user->getBasket();
     }
+
 }
