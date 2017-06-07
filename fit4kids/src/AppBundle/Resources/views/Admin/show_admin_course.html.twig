@@ -1,0 +1,70 @@
+{% block body %}
+    <a class="btn btn-success" href="/admin/course/add">Dodaj nowy kurs</a>
+    <table class="table-bordered table-hover text-center">
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Obrazek
+            </th>
+            <th>
+                Slider
+            </th>
+            <th>
+                Użytkownicy
+            </th>
+            <th>
+                Koszyki
+            </th>
+            <th>
+                Polubienia
+            </th>
+            <th>
+                Opcje
+            </th>
+            {%for course in courses %}
+            <tr>
+                <td>
+                    {{course.title}}
+                </td>
+                <td>
+                    {{course.description}}
+                </td>
+                <td>
+                    {{course.price}}
+                </td>
+                <td>
+                    {{course.picture}}
+                </td>
+                <td>
+                    {%if course.carousel is not null %} {{asset (course.carousel.picture)}} {%endif%}
+                </td>
+                <td>
+                    {%for user in course.users%}
+                        {{user.username}} <br>
+                    {%endfor%}
+                </td>
+                <td>
+                    {%for basket in course.baskets%}
+                        {{basket.id}} <br>
+                    {%endfor%}
+                </td>
+                <td>
+                    {{course.likes}}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/course/edit/{{course.id}}/">Edytuj</a>
+                    <a class="btn btn-danger" href="/admin/course/delete/{{course.id}}/">Usuń</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}
+

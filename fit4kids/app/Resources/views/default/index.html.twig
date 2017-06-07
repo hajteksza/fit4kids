@@ -15,7 +15,9 @@
             {%for carousel in carousels%}
 
                 <div class="item{%if loop.first %} active{%endif%}">
-                    <img src="{{carousel.picture}}" alt="image">
+                    <a href="/course/{{carousel.course.id}}">
+                        <img src="{{carousel.picture}}" alt="image">
+                    </a>
                 </div>
 
             {%endfor%}
