@@ -35,7 +35,7 @@ class Carousel {
      */
     private $picture;
 
-    /**
+     /**
      * @ORM\OneToOne(targetEntity="Course", inversedBy="carousel")
      */
     protected $course;
