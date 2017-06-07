@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Course;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Course controller.
@@ -116,6 +118,35 @@ class CourseController extends Controller
         }
 
         return $this->redirectToRoute('course_index');
+    }
+    
+     /**
+     * @Route("/{id}/pay", name="course_pay")
+     */
+    public function payAction(Request $req, $id)
+    {
+        $user = $this->getUser();
+        $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course');
+        $course = $courseRepo->find($id);
+        $pointsAfterPay = intval($user->getPoints()) - intval($course->getPrice());
+        if ($pointsAfterPay >=0){
+            $basket = $user->getBasket();
+            $basket->removeCourse($course);
+            $course->removeBasket($basket);
+            $course->addUser($user);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($basket);
+            $em->persist($course);
+            $em->flush();
+            $user->addCourse($course);
+            $user->setPoints($pointsAfterPay);
+            $userManager = $this->get('fos_user.user_manager');
+            $userManager->updateUser($user);
+            return new RedirectResponse($this->generateUrl('basket_show', array()));
+        }
+        else {
+          return new response ("not enough points");  
+        }
     }
 
     /**

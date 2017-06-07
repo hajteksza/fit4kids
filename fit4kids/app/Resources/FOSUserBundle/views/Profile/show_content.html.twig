@@ -1,0 +1,33 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="fos_user_user_show">
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <div style="margin-top: 10px">
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Edytuj dane</a></li>
+            <li><a data-toggle="tab" href="#menu1">Zmień hasło</a></li>
+            <li><a data-toggle="tab" href="#menu2">Koszyk</a></li>
+        </ul>
+
+        <div class="tab-content" style="margin-top: 10px">
+            <div id="home" class="tab-pane fade in active" style="margin-top: 10px;">
+                {{ render(controller(
+                'FOSUserBundle:Profile:edit'
+                )) }}
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                {{ render(controller(
+                'FOSUserBundle:ChangePassword:changePassword'
+                )) }}
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <p>tutaj będzie koszyk</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

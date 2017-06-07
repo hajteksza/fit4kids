@@ -24,13 +24,6 @@ class Basket
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=255)
-     */
-    private $status;
-
-    /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="basket")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -60,29 +53,6 @@ class Basket
         return $this->id;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return Basket
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
     /**
      * Set user
