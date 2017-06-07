@@ -294,3 +294,5 @@ class User extends BaseUser
         return $this->comments;
     }
 }
+
+//dodam komentarz
