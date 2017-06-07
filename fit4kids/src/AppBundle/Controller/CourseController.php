@@ -141,6 +141,8 @@ class CourseController extends Controller
      */
     public function payAction(Request $req, $id)
     {
+
+  try {
         $user = $this->getUser();
         $basket = $user->getBasket();
         $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course');
@@ -162,6 +164,8 @@ class CourseController extends Controller
             return $this->render('course/buy.html.twig');
         } else {
             return $this->render('course/buy_error.html.twig');
+          } catch (\Exception $e) {
+            return $this->render('course/buy_database_error.html.twig');
         }
     }
     
