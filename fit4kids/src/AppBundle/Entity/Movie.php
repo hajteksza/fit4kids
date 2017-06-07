@@ -216,6 +216,18 @@ class Movie
     {
         return $this->ratings;
     }
+    
+        public function getAverageRating()
+    {
+        if (count($this->ratings) == 0){
+            return 0;
+        }
+        $sum=0;
+        foreach ($this->getRatings() as $rating){
+            $sum += $rating->getRating();
+        }
+        return $sum/count($this->ratings);
+    }
 
     /**
      * Add user
