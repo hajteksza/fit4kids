@@ -3,7 +3,28 @@
 {% block title %}AppBundle:Admin:showAdminPanel{% endblock %}
 
 {% block body %}
-    <a class="btn btn-primary" href="/admin/carousel/">Slider</a>
-    <a class="btn btn-primary" href="/admin/course/">Kursy</a>
-    <a class="btn btn-primary" href="/admin/movie/">Filmy</a>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#carousel">Slider</a></li>
+            <li><a data-toggle="tab" href="#course">Kursy</a></li>
+            <li><a data-toggle="tab" href="#movie">Filmy</a></li>
+        </ul>
+
+        <div class="table tab-content" style="margin-top:10px">
+            <div id="carousel" class="tab-pane fade in active" style="margin-top: 10px;">
+                {{ render(controller(
+                'AppBundle:Admin:showAdminCarousel'
+                )) }}
+            </div>
+            <div id="course" class="tab-pane fade">
+                {{ render(controller(
+                'AppBundle:Admin:showAdminCourse'
+                )) }}
+            </div>
+            <div id="movie" class="tab-pane fade">
+                {{ render(controller(
+                'AppBundle:Admin:showAdminMovie'
+                )) }}
+            </div>
+        </div>
 {% endblock %}

@@ -1,0 +1,41 @@
+{% block body %}
+    <a class="btn btn-success" href="/admin/movie/add">Dodaj nowy film do kursu</a>
+    <table class="table table-bordered table-hover text-center">
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Ścieżka
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Kurs
+            </th>
+            <th>
+                Opcje
+            </th>
+            {%for movie in movies %}
+            <tr>
+                <td>
+                    {{movie.title}}
+                </td>
+                <td>
+                    {{movie.path}}
+                </td>
+                <td>
+                    {{movie.description}}
+                </td>
+                <td>
+                    {{movie.course.title}}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/movie/edit/{{movie.id}}/">Edytuj</a>
+                    <a class="btn btn-danger" href="/admin/movie/delete/{{movie.id}}/">Usuń</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}

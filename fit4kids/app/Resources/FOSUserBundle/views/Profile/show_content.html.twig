@@ -5,19 +5,21 @@
     <div class="fos_user_user_show">
         <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
         <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <p>Stan punktów: {{ user.points }}</p>
         <div style="margin-top: 10px">
         </div>
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Edytuj dane</a></li>
+            <li class="active"><a data-toggle="tab" href="#home">Koszyk</a></li>
             <li><a data-toggle="tab" href="#menu1">Zmień hasło</a></li>
-            <li><a data-toggle="tab" href="#menu2">Koszyk</a></li>
+            <li><a data-toggle="tab" href="#menu2">Edytuj dane</a></li>
+            <li><a data-toggle="tab" href="#menu3">Dodaj punkty</a></li>
         </ul>
 
         <div class="tab-content" style="margin-top: 10px">
             <div id="home" class="tab-pane fade in active" style="margin-top: 10px;">
                 {{ render(controller(
-                'FOSUserBundle:Profile:edit'
+                'AppBundle:Basket:show'
                 )) }}
             </div>
             <div id="menu1" class="tab-pane fade">
@@ -27,8 +29,28 @@
             </div>
             <div id="menu2" class="tab-pane fade">
                 {{ render(controller(
-                'AppBundle:Basket:show'
+                'FOSUserBundle:Profile:edit'
                 )) }}
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <span style="margin-right: 20px"><a href="/addPoints/10"
+                                                                class="btn btn-primary">Dodaj 10 punktów</a></span>
+                            <span style="margin-right: 20px"><a href="/addPoints/50"
+                                                                class="btn btn-primary">Dodaj 50 punktów</a></span>
+                            <span style="margin-right: 20px"><a href="/addPoints/100"
+                                                                class="btn btn-primary">Dodaj 100 punktów</a></span>
+                            <span style="margin-right: 20px"><a href="/addPoints/200"
+                                                                class="btn btn-primary">Dodaj 200 punktów</a></span>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

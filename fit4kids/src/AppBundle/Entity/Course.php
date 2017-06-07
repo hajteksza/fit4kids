@@ -74,17 +74,17 @@ class Course {
      * @ORM\OneToMany(targetEntity="Movie", mappedBy="course")
      */
     protected $movies;
-
-    public function __construct() {
-        $this->users = new ArrayCollection();
-        $this->movies = new ArrayCollection();
-    }
-
+    
     /**
      * @ORM\OneToOne(targetEntity="Carousel", inversedBy="course")
      * @ORM\JoinColumn(name="carousel_id", referencedColumnName="id")
      */
     private $carousel;
+
+    public function __construct() {
+        $this->users = new ArrayCollection();
+        $this->movies = new ArrayCollection();
+    }
 
     /**
      * Get id
