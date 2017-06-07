@@ -11,11 +11,11 @@
 }
 
 footer {
-    position: absolute;
+    clear: both;
+    position: relative;
+    z-index: 10;
+    margin-top: 1em;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 1rem;
-    background-color: #efefef;
-    text-align: center;
 }
