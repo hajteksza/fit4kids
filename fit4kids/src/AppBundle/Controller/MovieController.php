@@ -56,6 +56,23 @@ class MovieController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+     /**
+     * @Route("/courseMovies", name="course_movies")
+     * @Method("GET")
+     */
+    public function courseMoviesAction()
+    {
+        $user = $this->getUser();
+        $courses = $user->getCourses();
+        $movies = [];
+        foreach($courses as $course){
+            $movies[$course->getId()] = $course->getMovies();
+        }
+        return $this->render('movie/course_movies.html.twig', array(
+            'movies' => $movies,
+        ));
+    }
 
     /**
      * Finds and displays a movie entity.
@@ -117,6 +134,7 @@ class MovieController extends Controller
 
         return $this->redirectToRoute('movie_index');
     }
+    
 
     /**
      * Creates a form to delete a movie entity.
