@@ -7,8 +7,9 @@
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Description</th>
+                <th>Tytuł</th>
+                <th>Opis</th>
+                <th>Rating</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,18 @@
             <tr>
                 <td><a href="courseMovies" class="videoLink" data-id="{{movie.id}}">{{ movie.title }}</td>
                 <td>{{ movie.description }}</td>
+                <td>
+                    {% for x in 0..4 %}
+                        {% if movie.avgRating|round(2, 'floor') - x >= 1 %}
+                            <i class="fa fa-star gold"></i>
+                        {% elseif movie.avgRating - x > 0 %}
+                            <i class="fa fa-star-half-o gold"></i>
+                        {% else %}
+                            <i class="fa fa-star-o"></i>
+                        {% endif %}
+                    {% endfor %} 
+                    ({{movie.ratingCount}} ocen)
+                </td>
             </tr>
         
         </tbody>
@@ -24,7 +37,7 @@
     {% endfor %}
     <div id="videoDiv">
         <video width="320" height="240" controls>
-            <source id="video" src="" type="video/mp4">
+            <source id="video" src="" type="video/mp4"/>
         </video>
     </div>
 {% endblock %}
