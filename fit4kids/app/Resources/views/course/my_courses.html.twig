@@ -1,0 +1,35 @@
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Tytuł</th>
+                        <th>Opis</th>
+                        <th>Likes</th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for course in courses %}
+                        <tr>
+                            <td>{{ course.title }}</td>
+                            <td>{{ course.description }}</td>
+                            <td>{{ course.likes }}</td>
+                            <td>
+                                <a class="btn btn-default" href="{{ path('course_movies', { 'id': course.id }) }}">przejdż do filmów</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

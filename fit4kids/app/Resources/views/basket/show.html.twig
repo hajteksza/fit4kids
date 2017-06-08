@@ -1,0 +1,28 @@
+{% block body %}
+    {%if empty == 1%}
+            <div class="alert alert-info" style="margin-bottom: 35px;">
+                Koszyk Jest Pusty
+            </div>
+    {%endif%}
+    {%for course in courses%}
+    <ul>
+        <li>
+            Id: {{course.id}}
+        </li>
+        <li>
+            Title: {{course.title}}
+        </li>
+        <li>
+            Description: {{course.title}}
+        </li>
+        <li>
+            Price: {{course.price}} 
+        </li>
+            <a class="btn btn-default" href="/course/pay/{{course.id}}">Zapłać</a>
+            <a class = "btn btn-danger" href="{{ path('removeFromBasket', {'id': course.id}) }}">Usuń</a>
+     
+    </ul>
+    <hr>
+    {%endfor%}
+    <a class="btn btn-default" href="{{ path('payAllBasket') }}">Zapłać za wszystkie</a>
+{% endblock %}

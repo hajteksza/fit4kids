@@ -1,0 +1,31 @@
+{% block body %}
+    <table class="table table-bordered table-hover text-center">
+        <tr>
+            <th>
+                Użytkownik
+            </th>
+            <th>
+                Kursy
+            </th>
+            <th>
+                Opcje
+            </th>
+            {%for basket in baskets %}
+            <tr>
+                <td>
+                    {{basket.user.username}} <br>
+
+                </td>
+                <td>          
+                    {%for course in basket.courses%}
+                        {{course.title}} <br>
+                    {%endfor%}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/basket/edit/{{basket.id}}/">Edytuj</a>
+                    <a class="btn btn-danger" href="/admin/basket/delete/{{basket.id}}/">Usuń</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}
