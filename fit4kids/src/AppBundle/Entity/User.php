@@ -32,7 +32,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="Course", inversedBy="likedBy")
-     * @JoinTable(name="users_likes")
+     * @JoinTable(name="likes")
      */
 
     protected $likes;

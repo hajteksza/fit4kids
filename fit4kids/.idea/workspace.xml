@@ -88,11 +88,9 @@
       <file leaf-file-name="course_movies.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/movie/course_movies.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="57" column="10" lean-forward="false" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
-              <folding>
-                <element signature="e#58#102#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="-553">
+              <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1038,12 +1036,12 @@
       <workItem from="1496741211316" duration="4730000" />
       <workItem from="1496748793187" duration="299000" />
       <workItem from="1496750545043" duration="38234000" />
-      <workItem from="1496852721629" duration="22648000" />
+      <workItem from="1496852721629" duration="22840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65911000" />
+    <option name="totallyTimeSpent" value="66103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1260,56 +1258,56 @@
         <state relative-caret-position="299">
           <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
           <folding>
-            <marker date="1496919095000" expanded="true" signature="1652:1750" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="1760:1806" ph=" Get id ..." />
-            <marker date="1496919095000" expanded="true" signature="1838:1869" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="1879:1966" ph=" Set title ..." />
-            <marker date="1496919095000" expanded="true" signature="2007:2066" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="2076:2128" ph=" Get title ..." />
-            <marker date="1496919095000" expanded="true" signature="2163:2197" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="2207:2306" ph=" Set description ..." />
-            <marker date="1496919095000" expanded="true" signature="2359:2430" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="2440:2498" ph=" Get description ..." />
-            <marker date="1496919095000" expanded="true" signature="2539:2579" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="2589:2677" ph=" Set price ..." />
-            <marker date="1496919095000" expanded="true" signature="2718:2777" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="2787:2836" ph=" Get price ..." />
-            <marker date="1496919095000" expanded="true" signature="2871:2905" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="2915:3003" ph=" Set likes ..." />
-            <marker date="1496919095000" expanded="true" signature="3044:3103" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="3113:3162" ph=" Get likes ..." />
-            <marker date="1496919095000" expanded="true" signature="3197:3231" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="3241:3342" ph=" Add user ..." />
-            <marker date="1496919095000" expanded="true" signature="3404:3464" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="3474:3549" ph=" Remove user ..." />
-            <marker date="1496919095000" expanded="true" signature="3614:3663" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="3673:3758" ph=" Get users ..." />
-            <marker date="1496919095000" expanded="true" signature="3793:3827" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="3837:3944" ph=" Add likedBy ..." />
-            <marker date="1496919095000" expanded="true" signature="4012:4077" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="4087:4168" ph=" Remove likedBy ..." />
-            <marker date="1496919095000" expanded="true" signature="4239:4293" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="4303:4390" ph=" Get likedBy ..." />
-            <marker date="1496919095000" expanded="true" signature="4427:4463" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="4473:4580" ph=" Add basket ..." />
-            <marker date="1496919095000" expanded="true" signature="4648:4712" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="4722:4803" ph=" Remove basket ..." />
-            <marker date="1496919095000" expanded="true" signature="4874:4927" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="4937:5024" ph=" Get baskets ..." />
-            <marker date="1496919095000" expanded="true" signature="5061:5097" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="5107:5211" ph=" Add movie ..." />
-            <marker date="1496919095000" expanded="true" signature="5276:5338" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="5348:5426" ph=" Remove movie ..." />
-            <marker date="1496919095000" expanded="true" signature="5494:5545" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="5555:5641" ph=" Get movies ..." />
-            <marker date="1496919095000" expanded="true" signature="5677:5712" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="5722:5813" ph=" Set picture ..." />
-            <marker date="1496919095000" expanded="true" signature="5858:5921" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="5931:5985" ph=" Get picture ..." />
-            <marker date="1496919095000" expanded="true" signature="6022:6058" ph="..." />
-            <marker date="1496919095000" expanded="true" signature="6069:6182" ph=" Set carousel ..." />
-            <marker date="1496919095000" expanded="true" signature="6261:6333" ph="{...}" />
-            <marker date="1496919095000" expanded="true" signature="6342:6417" ph=" Get carousel ..." />
+            <marker date="1496950450000" expanded="true" signature="1652:1750" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="1760:1806" ph=" Get id ..." />
+            <marker date="1496950450000" expanded="true" signature="1838:1869" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="1879:1966" ph=" Set title ..." />
+            <marker date="1496950450000" expanded="true" signature="2007:2066" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="2076:2128" ph=" Get title ..." />
+            <marker date="1496950450000" expanded="true" signature="2163:2197" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="2207:2306" ph=" Set description ..." />
+            <marker date="1496950450000" expanded="true" signature="2359:2430" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="2440:2498" ph=" Get description ..." />
+            <marker date="1496950450000" expanded="true" signature="2539:2579" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="2589:2677" ph=" Set price ..." />
+            <marker date="1496950450000" expanded="true" signature="2718:2777" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="2787:2836" ph=" Get price ..." />
+            <marker date="1496950450000" expanded="true" signature="2871:2905" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="2915:3003" ph=" Set likes ..." />
+            <marker date="1496950450000" expanded="true" signature="3044:3103" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="3113:3162" ph=" Get likes ..." />
+            <marker date="1496950450000" expanded="true" signature="3197:3231" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="3241:3342" ph=" Add user ..." />
+            <marker date="1496950450000" expanded="true" signature="3404:3464" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="3474:3549" ph=" Remove user ..." />
+            <marker date="1496950450000" expanded="true" signature="3614:3663" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="3673:3758" ph=" Get users ..." />
+            <marker date="1496950450000" expanded="true" signature="3793:3827" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="3837:3944" ph=" Add likedBy ..." />
+            <marker date="1496950450000" expanded="true" signature="4012:4077" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="4087:4168" ph=" Remove likedBy ..." />
+            <marker date="1496950450000" expanded="true" signature="4239:4293" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="4303:4390" ph=" Get likedBy ..." />
+            <marker date="1496950450000" expanded="true" signature="4427:4463" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="4473:4580" ph=" Add basket ..." />
+            <marker date="1496950450000" expanded="true" signature="4648:4712" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="4722:4803" ph=" Remove basket ..." />
+            <marker date="1496950450000" expanded="true" signature="4874:4927" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="4937:5024" ph=" Get baskets ..." />
+            <marker date="1496950450000" expanded="true" signature="5061:5097" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="5107:5211" ph=" Add movie ..." />
+            <marker date="1496950450000" expanded="true" signature="5276:5338" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="5348:5426" ph=" Remove movie ..." />
+            <marker date="1496950450000" expanded="true" signature="5494:5545" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="5555:5641" ph=" Get movies ..." />
+            <marker date="1496950450000" expanded="true" signature="5677:5712" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="5722:5813" ph=" Set picture ..." />
+            <marker date="1496950450000" expanded="true" signature="5858:5921" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="5931:5985" ph=" Get picture ..." />
+            <marker date="1496950450000" expanded="true" signature="6022:6058" ph="..." />
+            <marker date="1496950450000" expanded="true" signature="6149:6262" ph=" Set carousel ..." />
+            <marker date="1496950450000" expanded="true" signature="6341:6413" ph="{...}" />
+            <marker date="1496950450000" expanded="true" signature="6422:6497" ph=" Get carousel ..." />
           </folding>
         </state>
       </provider>
@@ -1369,7 +1367,7 @@
         <state relative-caret-position="25">
           <caret line="103" column="38" lean-forward="false" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
           <folding>
-            <marker date="1496919095000" expanded="true" signature="816:1204" ph="//..." />
+            <marker date="1496950450000" expanded="true" signature="816:1204" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -1426,9 +1424,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="46" column="14" lean-forward="false" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,7 +1443,7 @@
         <state relative-caret-position="218">
           <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
-            <element signature="e#40#70#0#PHP" expanded="true" />
+            <element signature="e#40#70#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1572,11 +1568,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/movie/course_movies.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="10" lean-forward="false" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
-          <folding>
-            <element signature="e#58#102#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="-553">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
