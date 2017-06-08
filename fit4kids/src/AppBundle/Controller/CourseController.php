@@ -6,7 +6,9 @@ use AppBundle\Entity\Course;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Course controller.
@@ -24,40 +26,23 @@ class CourseController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $courses = $em->getRepository('AppBundle:Course')->findAll();
+        $user = $this->getUser();
+        $allCourses = $em->getRepository('AppBundle:Course')->findAll();
+//        $userCourses = [];
+//        foreach ($user->getCourses() as $userCourse){
+//            $userCourses[] = $userCourse;
+//        } 
+//        foreach ($allCourses as $course){
+//            if (in_array($course, $userCourses)){
+//                $course['hideAddButton'] = 'true';
+//            }
+//        }
 
         return $this->render('course/index.html.twig', array(
-            'courses' => $courses,
+            'courses' => $allCourses,
         ));
     }
-
-    /**
-     * Creates a new course entity.
-     *
-     * @Route("/new", name="course_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $course = new Course();
-        $form = $this->createForm('AppBundle\Form\CourseType', $course);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($course);
-            $em->flush();
-
-            return $this->redirectToRoute('course_show', array('id' => $course->getId()));
-        }
-
-        return $this->render('course/new.html.twig', array(
-            'course' => $course,
-            'form' => $form->createView(),
-        ));
-    }
-
+    
     /**
      * @Route("/myCourses", name="my_courses")
      * @Method({"GET", "POST"})
@@ -69,7 +54,6 @@ class CourseController extends Controller
         return $this->render('course/my_courses.html.twig', array(
             'courses' => $courses
         ));
-
     }
 
     /**
@@ -89,57 +73,10 @@ class CourseController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing course entity.
-     *
-     * @Route("/{id}/edit", name="course_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Course $course)
-    {
-        $deleteForm = $this->createDeleteForm($course);
-        $editForm = $this->createForm('AppBundle\Form\CourseType', $course);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('course_edit', array('id' => $course->getId()));
-        }
-
-        return $this->render('course/edit.html.twig', array(
-            'course' => $course,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-
-    /**
-     * Deletes a course entity.
-     *
-     * @Route("/{id}", name="course_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Course $course)
-    {
-        $form = $this->createDeleteForm($course);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($course);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('course_index');
-    }
-
-    /**
      * @Route("/pay/{id}", name="course_pay")
      */
     public function payAction(Request $req, $id)
     {
-
         try {
             $user = $this->getUser();
             $basket = $user->getBasket();
@@ -167,23 +104,6 @@ class CourseController extends Controller
             return $this->render('course/buy_database_error.html.twig');
         }
     }
-
-
-    /**
-     * Creates a form to delete a course entity.
-     *
-     * @param Course $course The course entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Course $course)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('course_delete', array('id' => $course->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
-    }
-
     public function findLoggedUserBasket()
     {
         $user = $this->getUser();
