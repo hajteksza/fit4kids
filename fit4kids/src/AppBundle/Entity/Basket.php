@@ -25,7 +25,7 @@ class Basket
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="basket")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
 
     protected $user;

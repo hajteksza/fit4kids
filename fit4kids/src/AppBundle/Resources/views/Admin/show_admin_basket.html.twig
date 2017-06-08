@@ -13,21 +13,13 @@
             {%for basket in baskets %}
             <tr>
                 <td>
-                    {%for user in users%}
-                        {{dump(user.id)}}
-                        {{dump(basket.user.id)}}
-                        {{dump(basket.user.username)}}
-                        {%if basket.user.id == user.id%}
-                            {{basket.user.username}} <br>
-                        {%endif%}
-                    {%endfor%}
+                    {{basket.user.username}} <br>
+
                 </td>
-                <td>
-                    {%if basket.courses is not null%}
-                        {%for course in basket.courses%}
-                            {{course.title}} <br>
-                        {%endfor%}
-                    {%endif%}
+                <td>          
+                    {%for course in basket.courses%}
+                        {{course.title}} <br>
+                    {%endfor%}
                 </td>
                 <td>
                     <a class="btn btn-primary" href="/admin/basket/edit/{{basket.id}}/">Edytuj</a>

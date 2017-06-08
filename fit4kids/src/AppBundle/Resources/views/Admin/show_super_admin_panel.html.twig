@@ -1,32 +1,22 @@
 {%extends 'base.html.twig'%}
 {%block body %}
-    
-    <a class="btn btn-success" href="/superadmin/add">Dodaj nowego administratora</a>
 
-    <table class="table table-bordered table-hover text-center">
-        <tr>
-            <th>
-                Nazwa użytkownika
-            </th>   
-            <th>
-                Adres e-mail
-            </th>
-            <th>
-                Opcje
-            </th>
-            {%for admin in admins %}
-            <tr>
-                <td>
-                    {{admin.username}}
-                </td>
-                <td>
-                    {{admin.email}}
-                </td>
-                <td>
-                    <a class="btn btn-primary" href="/superadmin/edit/{{admin.id}}/">Edytuj</a>
-                    <a class="btn btn-danger" href="/superadmin/delete/{{admin.id}}/">Usuń</a>
-                </td>
-            </tr>
-        {%endfor%}
-    </table>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#admin">Administratorzy</a></li>
+        <li><a data-toggle="tab" href="#user">Użytkownicy</a></li>
+
+    </ul>
+
+    <div class="table tab-content" style="margin-top:10px">
+        <div id="admin" class="tab-pane fade in active" style="margin-top: 10px;">
+            {{ render(controller(
+                'AppBundle:Admin:showSuperAdminAdmin'
+                )) }}
+        </div>
+        <div id="user" class="tab-pane fade">
+            {{ render(controller(
+                'AppBundle:Admin:showSuperAdminUser'
+                )) }}
+        </div>
+    </div>
 {% endblock %}
