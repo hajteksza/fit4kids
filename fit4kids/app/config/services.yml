@@ -38,3 +38,7 @@ services:
         arguments: ['@doctrine.orm.entity_manager']
         tags:
             - { name: kernel.event_subscriber }
+
+    app.security.access_denied_handler:
+        class: AppBundle\Security\AccessDeniedHandler
+        arguments: ["@templating"]
