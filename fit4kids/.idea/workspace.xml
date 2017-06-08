@@ -12,54 +12,65 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="622" column="0" lean-forward="true" selection-start-line="622" selection-start-column="0" selection-end-line="622" selection-end-column="0" />
+            <state relative-caret-position="404">
+              <caret line="619" column="9" lean-forward="false" selection-start-line="619" selection-start-column="9" selection-end-line="619" selection-end-column="9" />
               <folding>
                 <element signature="e#40#70#0#PHP" expanded="true" />
-                <marker date="1496917870000" expanded="true" signature="20400:20911" ph="..." />
+                <marker date="1496918845000" expanded="true" signature="20436:20947" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delete_error.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/delete_error.html.twig">
+      <file leaf-file-name="BasketController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="209">
+              <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+              <folding>
+                <marker date="1496918110000" expanded="true" signature="492:3373" ph="{...}" />
+                <marker date="1496918110000" expanded="true" signature="654:1021" ph="{...}" />
+                <marker date="1496918110000" expanded="true" signature="874:1013" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="905:1012" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="1035:1102" ph=" @Route(&quot;/removeCourse/{id}&quot;, name=&quot;removeFromBasket&quot;) ..." />
+                <marker date="1496918110000" expanded="true" signature="1152:1697" ph="{...}" />
+                <marker date="1496918110000" expanded="true" signature="1342:1590" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="1615:1690" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="1711:1763" ph=" @Route(&quot;/payAll&quot;, name=&quot;payAllBasket&quot;) ..." />
+                <marker date="1496918110000" expanded="true" signature="1820:3017" ph="{...}" />
+                <marker date="1496918110000" expanded="true" signature="1840:2903" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="2112:2804" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="2231:2530" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="2812:2893" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="2928:3010" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="3061:3142" ph="{...}" />
+                <marker date="1496918110000" expanded="true" signature="3191:3365" ph="..." />
+                <marker date="1496918110000" expanded="true" signature="3266:3331" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edited.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/edited.html.twig">
+      <file leaf-file-name="CourseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="5" lean-forward="false" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="-241">
+              <caret line="100" column="38" lean-forward="false" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deleted.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/deleted.html.twig">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="error.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/error.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="-34">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -69,34 +80,44 @@
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="299">
-              <caret line="27" column="71" lean-forward="false" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
+              <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delete_carousel_error.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/delete_carousel_error.html.twig">
+      <file leaf-file-name="show_content.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="845">
+              <caret line="58" column="49" lean-forward="false" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic_form.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/basic_form.html.twig">
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/basket/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+            <state relative-caret-position="30">
+              <caret line="2" column="66" lean-forward="false" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_user_form.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/admin_user_form.html.twig">
+      <file leaf-file-name="RatingController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_points.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Points/add_points.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -105,8 +126,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="added.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/added.html.twig">
+      <file leaf-file-name="delete_error.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/delete_error.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
@@ -134,6 +155,9 @@
       <find>deleteco</find>
       <find>addCourse</find>
       <find>add</find>
+      <find>addMovie</find>
+      <find>AppBundle:</find>
+      <find>$this-&gt;render(&quot;AppBund</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -144,7 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/check_email.html.twig" />
@@ -174,8 +197,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/movie/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/movie/course_movies.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/basket/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/course/buy_database_error.html.twig" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
@@ -188,13 +209,16 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/show_admin_user.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/added.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/error.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/deleted.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/delete_carousel_error.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/edited.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/delete_error.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Course.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/basket/show.html.twig" />
       </list>
     </option>
   </component>
@@ -342,58 +366,6 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fit4kids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fit4kids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fit4kids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fit4kids" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -502,6 +474,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fit4kids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basket" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1021,12 +1019,12 @@
       <workItem from="1496741211316" duration="4730000" />
       <workItem from="1496748793187" duration="299000" />
       <workItem from="1496750545043" duration="38234000" />
-      <workItem from="1496852721629" duration="11140000" />
+      <workItem from="1496852721629" duration="12135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54403000" />
+    <option name="totallyTimeSpent" value="55398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1080,28 +1078,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/course/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" column="14" lean-forward="false" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/course/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Rating.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1183,26 +1159,26 @@
         <state relative-caret-position="27">
           <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="12" />
           <folding>
-            <marker date="1496872407000" expanded="true" signature="1662:2759" ph="{...}" />
-            <marker date="1496872407000" expanded="true" signature="2727:2740" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="2727:2741" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="2727:2752" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="2773:2829" ph=" @Route(&quot;/getMoviePath&quot;, name=&quot;movie_path&quot;) ..." />
-            <marker date="1496872407000" expanded="true" signature="2884:3234" ph="{...}" />
-            <marker date="1496872407000" expanded="true" signature="2935:3219" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="3247:3366" ph=" Finds and displays a movie entity. ..." />
-            <marker date="1496872407000" expanded="true" signature="3413:3640" ph="{...}" />
-            <marker date="1496872407000" expanded="true" signature="3505:3632" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="3535:3631" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="3649:3798" ph=" Displays a form to edit an existing movie entity. ..." />
-            <marker date="1496872407000" expanded="true" signature="3863:4483" ph="{...}" />
-            <marker date="1496872407000" expanded="true" signature="4108:4264" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="4296:4475" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="4326:4474" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="4492:4605" ph=" Deletes a movie entity. ..." />
-            <marker date="1496872407000" expanded="true" signature="4672:5008" ph="{...}" />
-            <marker date="1496872407000" expanded="true" signature="4824:4946" ph="..." />
-            <marker date="1496872407000" expanded="true" signature="5022:5187" ph=" Creates a form to delete a movie entity. ..." />
+            <marker date="1496918110000" expanded="true" signature="1662:2759" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="2727:2740" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2727:2741" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2727:2752" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2773:2829" ph=" @Route(&quot;/getMoviePath&quot;, name=&quot;movie_path&quot;) ..." />
+            <marker date="1496918110000" expanded="true" signature="2884:3234" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="2935:3219" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="3247:3366" ph=" Finds and displays a movie entity. ..." />
+            <marker date="1496918110000" expanded="true" signature="3413:3640" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="3505:3632" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="3535:3631" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="3649:3798" ph=" Displays a form to edit an existing movie entity. ..." />
+            <marker date="1496918110000" expanded="true" signature="3863:4483" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="4108:4264" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="4296:4475" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="4326:4474" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="4492:4605" ph=" Deletes a movie entity. ..." />
+            <marker date="1496918110000" expanded="true" signature="4672:5008" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="4824:4946" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="5022:5187" ph=" Creates a form to delete a movie entity. ..." />
           </folding>
         </state>
       </provider>
@@ -1266,24 +1242,6 @@
           <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/basket/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="88" lean-forward="false" selection-start-line="26" selection-start-column="88" selection-end-line="26" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="163" column="38" lean-forward="false" selection-start-line="163" selection-start-column="38" selection-end-line="163" selection-end-column="38" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1406,36 +1364,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#382#409#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/course/buy.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="7" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="27" column="71" lean-forward="false" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
           <folding />
         </state>
       </provider>
@@ -1499,19 +1431,104 @@
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Admin/delete_error.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Points/add_points.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BasketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <marker date="1496918110000" expanded="true" signature="492:3373" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="654:1021" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="874:1013" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="905:1012" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="1035:1102" ph=" @Route(&quot;/removeCourse/{id}&quot;, name=&quot;removeFromBasket&quot;) ..." />
+            <marker date="1496918110000" expanded="true" signature="1152:1697" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="1342:1590" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="1615:1690" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="1711:1763" ph=" @Route(&quot;/payAll&quot;, name=&quot;payAllBasket&quot;) ..." />
+            <marker date="1496918110000" expanded="true" signature="1820:3017" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="1840:2903" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2112:2804" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2231:2530" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2812:2893" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="2928:3010" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="3061:3142" ph="{...}" />
+            <marker date="1496918110000" expanded="true" signature="3191:3365" ph="..." />
+            <marker date="1496918110000" expanded="true" signature="3266:3331" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CourseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-241">
+          <caret line="100" column="38" lean-forward="false" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Course.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RatingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="622" column="0" lean-forward="true" selection-start-line="622" selection-start-column="0" selection-end-line="622" selection-end-column="0" />
+        <state relative-caret-position="404">
+          <caret line="619" column="9" lean-forward="false" selection-start-line="619" selection-start-column="9" selection-end-line="619" selection-end-column="9" />
           <folding>
             <element signature="e#40#70#0#PHP" expanded="true" />
-            <marker date="1496917870000" expanded="true" signature="20400:20911" ph="..." />
+            <marker date="1496918845000" expanded="true" signature="20436:20947" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="845">
+          <caret line="58" column="49" lean-forward="false" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/basket/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="66" lean-forward="false" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>

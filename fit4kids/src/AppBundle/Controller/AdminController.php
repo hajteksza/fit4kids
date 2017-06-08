@@ -324,9 +324,9 @@ class AdminController extends Controller
                 $em->persist($movie);
                 $em->flush();
             }
-            return $this->render("AppBundle:added.html.twig");
+            return $this->render("AppBundle:Admin:added.html.twig");
         } catch (\Exception $e) {
-            return $this->render("AppBundle:error.html.twig");
+            return $this->render("AppBundle:Admin:error.html.twig");
         }
     }
 
@@ -383,9 +383,9 @@ class AdminController extends Controller
                 $em->persist($movie);
                 $em->flush();
             }
-            return $this->render("AppBundle:edited.html.twig");
+            return $this->render("AppBundle:Admin:edited.html.twig");
         } catch (\Exception $e) {
-            return $this->render("AppBundle:error.html.twig");
+            return $this->render("AppBundle:Admin:error.html.twig");
         }
     }
 
@@ -403,9 +403,9 @@ class AdminController extends Controller
             $em->remove($movie);
             $em->flush();
 
-            return $this->render("AppBundle:deleted.html.twig");
+            return $this->render("AppBundle:Admin:deleted.html.twig");
         } catch (\Exception $e) {
-            return $this->render("AppBundle:delete_error.html.twig");
+            return $this->render("AppBundle:Admin:delete_error.html.twig");
         }
     }
 
