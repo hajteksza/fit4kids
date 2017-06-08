@@ -7,7 +7,7 @@
                 {{ msg }}
             {% endfor %}
         </div>
-    {% endif %} 
+    {% endif %}
     {% if app.session.flashBag.has('danger') %}
         <div class="alert alert-danger">
             {% for msg in app.session.flashBag.get('danger') %}
@@ -19,16 +19,16 @@
     <div class="row">
         <div id="mainTableDiv" class="col-md-6">
             {% for movie in movies %}
-            <hr>
-            <table class="dataTable">
-                <thead>
+                <hr>
+                <table class="dataTable">
+                    <thead>
                     <tr>
                         <th>Tytuł</th>
                         <th>Opis</th>
                         <th>Rating</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
 
                     <tr>
                         <td><a href="courseMovies" class="videoLink" data-id="{{movie.id}}">{{ movie.title }}</td>
@@ -42,7 +42,7 @@
                                 {% else %}
                                     <i class="fa fa-star-o"></i>
                                 {% endif %}
-                            {% endfor %} 
+                            {% endfor %}
                             ({{movie.ratingCount}} ocen)
                             <form action="{{ path('addRating') }}" method="POST">
                                 <input type="number" name="value" min="0" max="5"></input>
@@ -51,12 +51,12 @@
                             </form>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            <hr>
+                    </tbody>
+                </table>
+                <hr>
             {% endfor %}
         </div>
-        <div id ="mainVideoDiv" class="col-md-6" >      
+        <div id ="mainVideoDiv" class="col-md-6" >
             <div id="videoDiv">
                 <video id="video" src="" width="800" height="500" controls>
                 </video>
