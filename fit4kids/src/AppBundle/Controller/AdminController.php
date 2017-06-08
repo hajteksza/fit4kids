@@ -94,7 +94,7 @@ class AdminController extends Controller {
         $em->remove($user);
         $em->flush();
 
-        return new Response('Usunięto');
+        return $this->render('AppBundle:Admin:show_super_admin_panel.html.twig');
     }
 
     /**

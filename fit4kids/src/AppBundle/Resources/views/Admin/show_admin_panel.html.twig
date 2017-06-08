@@ -3,7 +3,7 @@
 {% block title %}AppBundle:Admin:showAdminPanel{% endblock %}
 
 {% block body %}
-    {% if is_granted %}
+    {% if is_granted('ROLE_ADMIN') %}
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#carousel">Slider</a></li>
