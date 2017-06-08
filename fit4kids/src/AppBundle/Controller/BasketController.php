@@ -31,8 +31,7 @@ class BasketController extends Controller
         $empty=0;
         if (count($courses)==0){
             $empty = 1;
-        }
-        
+        }        
         return $this->render('basket/show.html.twig', array(
             'basket' => $basket,
             'courses' => $courses,

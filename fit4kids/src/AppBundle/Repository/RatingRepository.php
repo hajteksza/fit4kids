@@ -12,9 +12,13 @@ class RatingRepository extends \Doctrine\ORM\EntityRepository
 {
     public function checkIfUserRatedMovie($userId, $movieId){
         $query =$this->getEntityManager()->createQuery(''
-                . 'SELECT r FROM AppBundle:Rating r WHERE user_id = :userId AND movie_id = :movieId')
-                ->setParameter('userId', $userId);
-                ->setParameter('movieId', $movieId);
-        return $query->getResult();
+                . 'SELECT r FROM AppBundle:Rating r WHERE r.user = :userId AND r.movie = :movieId')
+                ->setParameters(array('userId' => $userId, 'movieId' => $movieId));
+        $result = $query->getResult();
+        $resultCount = count($result);
+        if ($resultCount !=0){
+            return true;
+        }
+        return false;
     }
 }
