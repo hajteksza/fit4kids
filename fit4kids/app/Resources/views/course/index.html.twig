@@ -6,7 +6,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h1>Lista Kursów</h1>
+                <h3 style="margin-bottom:30px;">Lista Kursów: </h3>
 
                 <table class="table table-bordered">
                     <thead>
@@ -23,6 +23,7 @@
                             <td>{{ course.title }}</td>
                             <td>{{ course.description }}</td>
                             <td>{{ course.price }}</td>
+
                             <td>
                                 <span>{{ course.likes }}</span>
                                 <a href="/course/like" class="likeLink" data-id="{{course.id}}">
@@ -36,6 +37,16 @@
                                    {%if course.addedByLoggedUser == 'false'%}
                                         <a class="btn btn-default" href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
                                    {%endif%}
+
+                            <td>{{ course.likes }}</td>
+                            <td>
+                                {% if course.addedByLoggedUser == 'true' %}
+                                    <a class="btn btn-info disabled" href="#">Zakupiony</a>
+                                {% endif %}
+                                {% if course.addedByLoggedUser == 'false' %}
+                                    <a class="btn btn-default" href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
+                                {% endif %}
+
                             </td>
                         </tr>
                     {% endfor %}

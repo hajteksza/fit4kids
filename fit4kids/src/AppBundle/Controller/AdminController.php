@@ -16,16 +16,24 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
-class AdminController extends Controller
-{
+class AdminController extends Controller {
 
     /**
      * @Route("/superadmin/")
      * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
-    public function showSuperAdminPanelAction()
-    {
+    public function showSuperAdminPanelAction() {
+        return $this->render('AppBundle:Admin:show_super_admin_panel.html.twig');
+    }
+
+    /**
+     * @Route("/superadmin/admin/")
+     * @Method("GET")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     */
+    public function showSuperAdminAdminAction() {
         $repo = $this->getDoctrine()->getRepository('AppBundle:User');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
         $admins = $qb->select('u')
@@ -34,8 +42,42 @@ class AdminController extends Controller
                 ->setParameter('roles', '%ADMIN%')
                 ->getQuery()
                 ->getResult();
-        return $this->render('AppBundle:Admin:show_super_admin_panel.html.twig', array(
+        return $this->render('AppBundle:Admin:show_super_admin_admin.html.twig', array(
                     'admins' => $admins
+        ));
+    }
+
+    /**
+     * @Route("/superadmin/user/")
+     * @Method("GET")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     */
+    public function showSuperAdminUserAction() {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $users = $qb->select('u')
+                ->from('AppBundle:User', 'u')
+                ->where('u.roles NOT LIKE :roles')
+                ->setParameter('roles', '%ADMIN%')
+                ->getQuery()
+                ->getResult();
+        return $this->render('AppBundle:Admin:show_super_admin_user.html.twig', array(
+                    'users' => $users
+        ));
+    }
+
+    /**
+     * @Route("/superadmin/promote/{id}/")
+     * @Method("GET")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     */
+    public function PromoteUserAction($id) {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $user = $repo->find($id);
+        $user->setRoles(array('ROLE_ADMIN'));
+        $userManager = $this->get('fos_user.user_manager');
+        $userManager->updateUser($user);
+        return $this->render('AppBundle:Admin:show_super_admin_panel.html.twig', array(
         ));
     }
 
@@ -59,24 +101,28 @@ class AdminController extends Controller
      * @Route("/admin/")
      * @Security("has_role('ROLE_ADMIN')")
      */
+
     public function showAdminPanelAction()
     {
-        return $this->render('AppBundle:Admin:show_admin_panel.html.twig', array(// ...
-        ));
+        try {
+            return $this->render('AppBundle:Admin:show_admin_panel.html.twig', array(// ...
+            ));
+        } catch (\Exception $e) {
+            return $this->render('AppBundle:Admin:access_denied.html.twig');
+        }
     }
 
     /**
      * @Route("/admin/carousel/")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAdminCarouselAction()
-    {
+    public function showAdminCarouselAction() {
 
         $repo = $this->getDoctrine()->getRepository('AppBundle:Carousel');
         $carousels = $repo->findAll();
 
         return $this->render('AppBundle:Admin:show_admin_carousel.html.twig', array(
-            "carousels" => $carousels,
+                    "carousels" => $carousels,
         ));
     }
 
@@ -84,12 +130,11 @@ class AdminController extends Controller
      * @Route("/admin/course/")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAdminCourseAction()
-    {
+    public function showAdminCourseAction() {
         $repo = $this->getDoctrine()->getRepository('AppBundle:Course');
         $courses = $repo->findAll();
         return $this->render('AppBundle:Admin:show_admin_course.html.twig', array(
-            'courses' => $courses
+                    'courses' => $courses
         ));
     }
 
@@ -97,12 +142,11 @@ class AdminController extends Controller
      * @Route("/admin/movie/")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAdminMovieAction()
-    {
+    public function showAdminMovieAction() {
         $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
         $movies = $repo->findAll();
         return $this->render('AppBundle:Admin:show_admin_movie.html.twig', array(
-            'movies' => $movies
+                    'movies' => $movies
         ));
     }
 
@@ -110,50 +154,55 @@ class AdminController extends Controller
      * @Route("/admin/user/")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAdminUserAction()
-    {
+    public function showAdminUserAction() {
         $repo = $this->getDoctrine()->getRepository('AppBundle:User');
-        $users = $repo->findAll();
+                $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $users = $qb->select('u')
+                ->from('AppBundle:User', 'u')
+                ->where('u.roles NOT LIKE :roles')
+                ->setParameter('roles', '%ADMIN%')
+                ->getQuery()
+                ->getResult();
         return $this->render('AppBundle:Admin:show_admin_user.html.twig', array(
-            'users' => $users
+                    'users' => $users
         ));
     }
 
     /**
+
      * @Route("/admin/basket/")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAdminBasketAction()
-    {
+    public function showAdminBasketAction() {
         $repoBasket = $this->getDoctrine()->getRepository('AppBundle:Basket');
         $repoUser = $this->getDoctrine()->getRepository('AppBundle:Basket');
         $users = $repoUser->findAll();
         $baskets = $repoBasket->findAll();
         return $this->render('AppBundle:Admin:show_admin_basket.html.twig', array(
-            'baskets' => $baskets,
-            'users' => $users
+                    'baskets' => $baskets,
+                    'users' => $users
         ));
     }
 
     /**
+
      * @Route("/admin/carousel/add/")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAddCarouselFormAction()
-    {
+    public function showAddCarouselFormAction() {
         $carousel = new Carousel();
         $form = $this->createFormBuilder($carousel)
-            ->add('name', TextType::class)
-            ->add('course', EntityType::class, array(
-                'class' => 'AppBundle:Course',
-                'choice_label' => 'title'))
-            ->add('picture', FileType::class)
-            ->add('Dodaj', SubmitType::class)
-            ->getForm();
+                ->add('name', TextType::class)
+                ->add('course', EntityType::class, array(
+                    'class' => 'AppBundle:Course',
+                    'choice_label' => 'title'))
+                ->add('picture', FileType::class)
+                ->add('Dodaj', SubmitType::class)
+                ->getForm();
 
         return $this->render('AppBundle:Admin:basic_form.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
 
@@ -162,19 +211,18 @@ class AdminController extends Controller
      * @Method("POST")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function addCarouselAction(Request $request)
-    {
+    public function addCarouselAction(Request $request) {
         try {
             $carousel = new Carousel();
 
             $form = $this->createFormBuilder($carousel)
-                ->add('name', TextType::class)
-                ->add('course', EntityType::class, array(
-                    'class' => 'AppBundle:Course',
-                    'choice_label' => 'title'))
-                ->add('picture', FileType::class)
-                ->add('Dodaj', SubmitType::class)
-                ->getForm();
+                    ->add('name', TextType::class)
+                    ->add('course', EntityType::class, array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title'))
+                    ->add('picture', FileType::class)
+                    ->add('Dodaj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -209,23 +257,22 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showEditCarouselFormAction($id)
-    {
+    public function showEditCarouselFormAction($id) {
 
         $repo = $this->getDoctrine()->getRepository('AppBundle:Carousel');
         $carousel = $repo->find($id);
 
         $form = $this->createFormBuilder($carousel)
-            ->add('name', TextType::class)
-            ->add('course', EntityType::class, array(
-                'class' => 'AppBundle:Course',
-                'choice_label' => 'title'))
-            ->add('picture', FileType::class, array('data_class' => null))
-            ->add('Edytuj', SubmitType::class)
-            ->getForm();
+                ->add('name', TextType::class)
+                ->add('course', EntityType::class, array(
+                    'class' => 'AppBundle:Course',
+                    'choice_label' => 'title'))
+                ->add('picture', FileType::class, array('data_class' => null))
+                ->add('Edytuj', SubmitType::class)
+                ->getForm();
 
         return $this->render('AppBundle:Admin:basic_form.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
 
@@ -234,20 +281,19 @@ class AdminController extends Controller
      * @Method("POST")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function editCarouselAction(Request $request, $id)
-    {
+    public function editCarouselAction(Request $request, $id) {
         try {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Carousel');
             $carousel = $repo->find($id);
 
             $form = $this->createFormBuilder($carousel)
-                ->add('name', TextType::class)
-                ->add('course', EntityType::class, array(
-                    'class' => 'AppBundle:Course',
-                    'choice_label' => 'title'))
-                ->add('picture', FileType::class, array('data_class' => null))
-                ->add('Dodaj', SubmitType::class)
-                ->getForm();
+                    ->add('name', TextType::class)
+                    ->add('course', EntityType::class, array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title'))
+                    ->add('picture', FileType::class, array('data_class' => null))
+                    ->add('Dodaj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -282,8 +328,7 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showDeleteCarouselFormAction($id)
-    {
+    public function showDeleteCarouselFormAction($id) {
 
         $repo = $this->getDoctrine()->getRepository('AppBundle:Carousel');
         $carousel = $repo->find($id);
@@ -299,35 +344,9 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAddMovieFormAction()
-    {
+    public function showAddMovieFormAction() {
         $movie = new Movie();
         $form = $this->createFormBuilder($movie)
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('course', EntityType::class, array(
-                'class' => 'AppBundle:Course',
-                'choice_label' => 'title'))
-            ->add('path', FileType::class)
-            ->add('Dodaj', SubmitType::class)
-            ->getForm();
-
-        return $this->render('AppBundle:Admin:basic_form.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
-
-    /**
-     * @Route("/admin/movie/add/")
-     * @Method("POST")
-     * @Security("has_role('ROLE_ADMIN')")
-     */
-    public function addMovieAction(Request $request)
-    {
-        try {
-            $movie = new Movie();
-
-            $form = $this->createFormBuilder($movie)
                 ->add('title', TextType::class)
                 ->add('description', TextType::class)
                 ->add('course', EntityType::class, array(
@@ -336,6 +355,30 @@ class AdminController extends Controller
                 ->add('path', FileType::class)
                 ->add('Dodaj', SubmitType::class)
                 ->getForm();
+
+        return $this->render('AppBundle:Admin:basic_form.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/movie/add/")
+     * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function addMovieAction(Request $request) {
+        try {
+            $movie = new Movie();
+
+            $form = $this->createFormBuilder($movie)
+                    ->add('title', TextType::class)
+                    ->add('description', TextType::class)
+                    ->add('course', EntityType::class, array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title'))
+                    ->add('path', FileType::class)
+                    ->add('Dodaj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -346,9 +389,9 @@ class AdminController extends Controller
                 $em->persist($movie);
                 $em->flush();
             }
-            return $this->render("AppBundle:added.html.twig");
+            return $this->render("AppBundle:Admin:added.html.twig");
         } catch (\Exception $e) {
-            return $this->render("AppBundle:error.html.twig");
+            return $this->render("AppBundle:Admin:error.html.twig");
         }
     }
 
@@ -357,36 +400,10 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showEditMovieFormAction($id)
-    {
+    public function showEditMovieFormAction($id) {
         $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
         $movie = $repo->find($id);
         $form = $this->createFormBuilder($movie)
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('course', EntityType::class, array(
-                'class' => 'AppBundle:Course',
-                'choice_label' => 'title'))
-            ->add('path', FileType::class, array('data_class' => null))
-            ->add('Edytuj', SubmitType::class)
-            ->getForm();
-
-        return $this->render('AppBundle:Admin:basic_form.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
-
-    /**
-     * @Route("/admin/movie/edit/{id}/")
-     * @Method("POST")
-     * @Security("has_role('ROLE_ADMIN')")
-     */
-    public function editMovieAction(Request $request, $id)
-    {
-        try {
-            $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
-            $movie = $repo->find($id);
-            $form = $this->createFormBuilder($movie)
                 ->add('title', TextType::class)
                 ->add('description', TextType::class)
                 ->add('course', EntityType::class, array(
@@ -395,6 +412,30 @@ class AdminController extends Controller
                 ->add('path', FileType::class, array('data_class' => null))
                 ->add('Edytuj', SubmitType::class)
                 ->getForm();
+
+        return $this->render('AppBundle:Admin:basic_form.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/movie/edit/{id}/")
+     * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function editMovieAction(Request $request, $id) {
+        try {
+            $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
+            $movie = $repo->find($id);
+            $form = $this->createFormBuilder($movie)
+                    ->add('title', TextType::class)
+                    ->add('description', TextType::class)
+                    ->add('course', EntityType::class, array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title'))
+                    ->add('path', FileType::class, array('data_class' => null))
+                    ->add('Edytuj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -405,9 +446,9 @@ class AdminController extends Controller
                 $em->persist($movie);
                 $em->flush();
             }
-            return $this->render("AppBundle:edited.html.twig");
+            return $this->render("AppBundle:Admin:edited.html.twig");
         } catch (\Exception $e) {
-            return $this->render("AppBundle:error.html.twig");
+            return $this->render("AppBundle:Admin:error.html.twig");
         }
     }
 
@@ -416,8 +457,7 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function deleteMovieAction($id)
-    {
+    public function deleteMovieAction($id) {
         try {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
             $movie = $repo->find($id);
@@ -425,9 +465,9 @@ class AdminController extends Controller
             $em->remove($movie);
             $em->flush();
 
-            return $this->render("AppBundle:deleted.html.twig");
+            return $this->render("AppBundle:Admin:deleted.html.twig");
         } catch (\Exception $e) {
-            return $this->render("AppBundle:delete_error.html.twig");
+            return $this->render("AppBundle:Admin:delete_error.html.twig");
         }
     }
 
@@ -436,19 +476,18 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAddCourseFormAction()
-    {
+    public function showAddCourseFormAction() {
         $course = new Course();
         $form = $this->createFormBuilder($course)
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('price', IntegerType::class)
-            ->add('picture', FileType::class)
-            ->add('Dodaj', SubmitType::class)
-            ->getForm();
+                ->add('title', TextType::class)
+                ->add('description', TextType::class)
+                ->add('price', IntegerType::class)
+                ->add('picture', FileType::class)
+                ->add('Dodaj', SubmitType::class)
+                ->getForm();
 
         return $this->render('AppBundle:Admin:basic_form.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
 
@@ -457,18 +496,17 @@ class AdminController extends Controller
      * @Method("POST")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function addCourseAction(Request $request)
-    {
+    public function addCourseAction(Request $request) {
         try {
             $course = new Course();
 
             $form = $this->createFormBuilder($course)
-                ->add('title', TextType::class)
-                ->add('description', TextType::class)
-                ->add('price', IntegerType::class)
-                ->add('picture', FileType::class)
-                ->add('Dodaj', SubmitType::class)
-                ->getForm();
+                    ->add('title', TextType::class)
+                    ->add('description', TextType::class)
+                    ->add('price', IntegerType::class)
+                    ->add('picture', FileType::class)
+                    ->add('Dodaj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -485,7 +523,6 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return $this->render('AppBundle:Admin:error.html.twig');
         }
-
     }
 
     /**
@@ -493,20 +530,19 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showEditCourseFormAction($id)
-    {
+    public function showEditCourseFormAction($id) {
         $repo = $this->getDoctrine()->getRepository('AppBundle:Course');
         $course = $repo->find($id);
         $form = $this->createFormBuilder($course)
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('price', IntegerType::class)
-            ->add('picture', FileType::class, array('data_class' => null))
-            ->add('Dodaj', SubmitType::class)
-            ->getForm();
+                ->add('title', TextType::class)
+                ->add('description', TextType::class)
+                ->add('price', IntegerType::class)
+                ->add('picture', FileType::class, array('data_class' => null))
+                ->add('Dodaj', SubmitType::class)
+                ->getForm();
 
         return $this->render('AppBundle:Admin:basic_form.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
 
@@ -515,18 +551,17 @@ class AdminController extends Controller
      * @Method("POST")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function editCourseAction(Request $request, $id)
-    {
+    public function editCourseAction(Request $request, $id) {
         try {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Course');
             $course = $repo->find($id);
             $form = $this->createFormBuilder($course)
-                ->add('title', TextType::class)
-                ->add('description', TextType::class)
-                ->add('price', IntegerType::class)
-                ->add('picture', FileType::class, array('data_class' => null))
-                ->add('Dodaj', SubmitType::class)
-                ->getForm();
+                    ->add('title', TextType::class)
+                    ->add('description', TextType::class)
+                    ->add('price', IntegerType::class)
+                    ->add('picture', FileType::class, array('data_class' => null))
+                    ->add('Dodaj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -548,8 +583,7 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function deleteCourseAction($id)
-    {
+    public function deleteCourseAction($id) {
         try {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Course');
             $course = $repo->find($id);
@@ -568,24 +602,26 @@ class AdminController extends Controller
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showEditUserFormAction($id)
-    {
+    public function showEditUserFormAction($id) {
         $repo = $this->getDoctrine()->getRepository('AppBundle:User');
         $user = $repo->find($id);
-        
+        if ($user->hasRole('ROLE_ADMIN')) {
+            throw new Exception();
+        }
+
         $form = $this->createFormBuilder($user)
-            ->add('username', TextType::class)
-            ->add('points', IntegerType::class)
-            ->add('courses', EntityType::class, array(
-                'class' => 'AppBundle:Course',
-                'choice_label' => 'title',
-                'multiple' => 'true',
-                'expanded' => 'true'))
-            ->add('Edytuj', SubmitType::class)
-            ->getForm();
+                ->add('username', TextType::class)
+                ->add('points', IntegerType::class)
+                ->add('courses', EntityType::class, array(
+                    'class' => 'AppBundle:Course',
+                    'choice_label' => 'title',
+                    'multiple' => 'true',
+                    'expanded' => 'true'))
+                ->add('Edytuj', SubmitType::class)
+                ->getForm();
 
         return $this->render('AppBundle:Admin:admin_user_form.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
 
@@ -594,22 +630,24 @@ class AdminController extends Controller
      * @Method("POST")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function editUserAction(Request $request, $id)
-    {
+    public function editUserAction(Request $request, $id) {
         try {
             $repo = $this->getDoctrine()->getRepository('AppBundle:User');
             $user = $repo->find($id);
+            if ($user->hasRole('ROLE_ADMIN')) {
+                throw new Exception();
+            }
             $form = $this->createFormBuilder($user)
-                ->add('username', TextType::class)
-                ->add('points', IntegerType::class)
-                ->add('courses', EntityType::class, array(
-                    'class' => 'AppBundle:Course',
-                    'choice_label' => 'title',
-                    'multiple' => 'true',
-                    'expanded' => 'true'
-                ))
-                ->add('Edytuj', SubmitType::class)
-                ->getForm();
+                    ->add('username', TextType::class)
+                    ->add('points', IntegerType::class)
+                    ->add('courses', EntityType::class, array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title',
+                        'multiple' => 'true',
+                        'expanded' => 'true'
+                    ))
+                    ->add('Edytuj', SubmitType::class)
+                    ->getForm();
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -618,21 +656,23 @@ class AdminController extends Controller
                 $em->flush();
             }
             return $this->render("AppBundle:Admin:edited.html.twig");
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return $this->render("AppBundle:Admin:error.html.twig");
         }
     }
 
-    /**
+    /**<h1 style="margin-bottom: 30px">Zarejestruj się:</h1>
      * @Route("/admin/user/delete/{id}/")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function deleteUserAction($id)
-    {
+    public function deleteUserAction($id) {
         try {
             $repo = $this->getDoctrine()->getRepository('AppBundle:User');
             $user = $repo->find($id);
+            if ($user->hasRole('ROLE_ADMIN')) {
+                throw new Exception();
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();
@@ -642,4 +682,5 @@ class AdminController extends Controller
             return $this->render("AppBundle:Admin:delete_error.html.twig");
         }
     }
+
 }
