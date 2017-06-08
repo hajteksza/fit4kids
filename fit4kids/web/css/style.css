@@ -18,7 +18,8 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    background-color:lightcyan;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
