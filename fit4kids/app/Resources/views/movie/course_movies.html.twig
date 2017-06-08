@@ -16,47 +16,52 @@
         </div>
     {% endif %}
     <h1>Kurs: {{courseTitle}}</h1>
-    {% for movie in movies %}
-    <hr>
-    <table>
-        <thead>
-            <tr>
-                <th>Tytuł</th>
-                <th>Opis</th>
-                <th>Rating</th>
-            </tr>
-        </thead>
-        <tbody>
-        
-            <tr>
-                <td><a href="courseMovies" class="videoLink" data-id="{{movie.id}}">{{ movie.title }}</td>
-                <td>{{ movie.description }}</td>
-                <td>
-                    {% for x in 0..4 %}
-                        {% if movie.avgRating|round(2, 'floor') - x >= 1 %}
-                            <i class="fa fa-star gold"></i>
-                        {% elseif movie.avgRating - x > 0 %}
-                            <i class="fa fa-star-half-o gold"></i>
-                        {% else %}
-                            <i class="fa fa-star-o"></i>
-                        {% endif %}
-                    {% endfor %} 
-                    ({{movie.ratingCount}} ocen)
-                    <form action="{{ path('addRating') }}" method="POST">
-                        <input type="number" name="value" min="0" max="5"></input>
-                        <INPUT type="HIDDEN" NAME="movieId" VALUE={{movie.id}}>
-                        <input type="submit" value="oceń film"</input>
-                    </form>
-                </td>
-            </tr>
-        
-        </tbody>
-    </table>
-    <hr>
-    {% endfor %}
-    <div id="videoDiv">
-        <video id="video" src="" width="320" height="240" controls>
-        </video>
+    <div class="row">
+        <div id="mainTableDiv" class="col-md-6">
+            {% for movie in movies %}
+            <hr>
+            <table class="dataTable">
+                <thead>
+                    <tr>
+                        <th>Tytuł</th>
+                        <th>Opis</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><a href="courseMovies" class="videoLink" data-id="{{movie.id}}">{{ movie.title }}</td>
+                        <td>{{ movie.description }}</td>
+                        <td>
+                            {% for x in 0..4 %}
+                                {% if movie.avgRating|round(2, 'floor') - x >= 1 %}
+                                    <i class="fa fa-star gold"></i>
+                                {% elseif movie.avgRating - x > 0 %}
+                                    <i class="fa fa-star-half-o gold"></i>
+                                {% else %}
+                                    <i class="fa fa-star-o"></i>
+                                {% endif %}
+                            {% endfor %} 
+                            ({{movie.ratingCount}} ocen)
+                            <form action="{{ path('addRating') }}" method="POST">
+                                <input type="number" name="value" min="0" max="5"></input>
+                                <INPUT type="HIDDEN" NAME="movieId" VALUE={{movie.id}}>
+                                <input class = "btn btn-default"type="submit" value="oceń film"</input>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            {% endfor %}
+        </div>
+        <div id ="mainVideoDiv" class="col-md-6" >      
+            <div id="videoDiv">
+                <video id="video" src="" width="800" height="500" controls>
+                </video>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
