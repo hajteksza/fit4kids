@@ -37,16 +37,6 @@
                                    {%if course.addedByLoggedUser == 'false'%}
                                         <a class="btn btn-default" href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
                                    {%endif%}
-
-                            <td>{{ course.likes }}</td>
-                            <td>
-                                {% if course.addedByLoggedUser == 'true' %}
-                                    <a class="btn btn-info disabled" href="#">Zakupiony</a>
-                                {% endif %}
-                                {% if course.addedByLoggedUser == 'false' %}
-                                    <a class="btn btn-default" href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
-                                {% endif %}
-
                             </td>
                         </tr>
                     {% endfor %}
