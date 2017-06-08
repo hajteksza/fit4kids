@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Carousel;
 use AppBundle\Entity\Movie;
 use AppBundle\Entity\Course;
+use AppBundle\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -24,10 +25,14 @@ class AdminController extends Controller {
      * @Route("/superadmin/")
      * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
-    public function showSuperAdminPanelAction(){
-        return new Response('ok');
+    public function showSuperAdminPanelAction() {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $users = $repo->findAll();
+        return $this->render('AppBundle:Admin:show_super_admin_panel.html.twig', array(
+                    'users' => $users
+        ));
     }
-    
+
     /**
      * @Route("/admin/")
      * @Security("has_role('ROLE_ADMIN')")
@@ -295,7 +300,7 @@ class AdminController extends Controller {
             if ($form->isSubmitted() && $form->isValid()) {
                 $file = $movie->getPath();
                 $newPath = $file->move("Assets/movies/", $file->getClientOriginalName());
-                $movie->setPath("/".$newPath);
+                $movie->setPath("/" . $newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($movie);
                 $em->flush();
@@ -502,17 +507,15 @@ class AdminController extends Controller {
         $form = $this->createFormBuilder($user)
                 ->add('username', TextType::class)
                 ->add('points', IntegerType::class)
-             /*   ->add('courses', CollectionType::class, array(
-                    'entry_type' => CollectionType::class,
-                    'entry_options' => array(
-                        'class' => 'AppBundle:Course',
-                        'choice_label' => 'title'
-                    )
-                )) */
+                ->add('courses', EntityType::class, array(
+                    'class' => 'AppBundle:Course',
+                    'choice_label' => 'title',
+                    'multiple' => 'true',
+                    'expanded' => 'true'))
                 ->add('Edytuj', SubmitType::class)
                 ->getForm();
 
-        return $this->render('AppBundle:Admin:basic_form.html.twig', array(
+        return $this->render('AppBundle:Admin:admin_user_form.html.twig', array(
                     'form' => $form->createView()
         ));
     }
@@ -528,10 +531,12 @@ class AdminController extends Controller {
             $form = $this->createFormBuilder($user)
                     ->add('username', TextType::class)
                     ->add('points', IntegerType::class)
-          /*          ->add('courses', EntityType::class, array(
-                            'class' => 'AppBundle:Course',
-                            'choice_label' => 'title' 
-                    )) */
+                    ->add('courses', EntityType::class, array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title',
+                        'multiple' => 'true',
+                        'expanded' => 'true'
+                    ))
                     ->add('Edytuj', SubmitType::class)
                     ->getForm();
 
