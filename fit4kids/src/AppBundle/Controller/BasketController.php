@@ -64,27 +64,31 @@ class BasketController extends Controller
      */
     public function payAllInBasketAction(Request $req)
     {
-        $user = $this->getUser();
-        $basket = $user->getBasket();
-        $totalPrice = $this->getTotalPrice($basket);
-        $pointsAfterPay = intval($user->getPoints()) - $totalPrice;
-        if ($pointsAfterPay >= 0 && $totalPrice !=null) {
-            $em = $this->getDoctrine()->getManager();
-            foreach ($basket->getCourses() as $course){
-                $basket->removeCourse($course);
-                $course->removeBasket($basket);
-                $course->addUser($user);
-                $em->persist($basket);
-                $em->persist($course);
-                $user->addCourse($course);
+        try {
+            $user = $this->getUser();
+            $basket = $user->getBasket();
+            $totalPrice = $this->getTotalPrice($basket);
+            $pointsAfterPay = intval($user->getPoints()) - $totalPrice;
+            if ($pointsAfterPay >= 0 && $totalPrice != null) {
+                $em = $this->getDoctrine()->getManager();
+                foreach ($basket->getCourses() as $course) {
+                    $basket->removeCourse($course);
+                    $course->removeBasket($basket);
+                    $course->addUser($user);
+                    $em->persist($basket);
+                    $em->persist($course);
+                    $user->addCourse($course);
+                }
+                $em->flush();
+                $user->setPoints($pointsAfterPay);
+                $userManager = $this->get('fos_user.user_manager');
+                $userManager->updateUser($user);
+                return $this->render('course/buy.html.twig');
+            } else {
+                return $this->render('course/buy_error.html.twig');
             }
-            $em->flush();
-            $user->setPoints($pointsAfterPay);
-            $userManager = $this->get('fos_user.user_manager');
-            $userManager->updateUser($user);
-            return $this->render('course/buy.html.twig');
-        } else {
-            return $this->render('course/buy_error.html.twig');
+        } catch (\Exception $e) {
+            return $this->render('course/buy_database_error.html.twig');
         }
     }
 
