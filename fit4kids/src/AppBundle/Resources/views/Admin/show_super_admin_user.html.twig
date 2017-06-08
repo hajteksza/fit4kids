@@ -1,0 +1,25 @@
+    <table class="table table-bordered table-hover text-center">
+        <tr>
+            <th>
+                Nazwa użytkownika
+            </th>   
+            <th>
+                Adres e-mail
+            </th>
+            <th>
+                Opcje
+            </th>
+            {%for user in users %}
+            <tr>
+                <td>
+                    {{user.username}}
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/superadmin/promote/{{user.id}}/">Promuj na administratora</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
