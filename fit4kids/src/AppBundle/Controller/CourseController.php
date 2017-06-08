@@ -209,14 +209,4 @@ class CourseController extends Controller
         }
     }
     
-    public function getTotalPrice($basket){
-        $totalPrice=0;
-        if(empty($basket->getCourses)){
-            return null;
-        }
-        foreach ($basket->getCourses() as $course){
-            $totalPrice += intval($course->getPrice());
-        }
-        return $totalPrice;
-    }
 }
