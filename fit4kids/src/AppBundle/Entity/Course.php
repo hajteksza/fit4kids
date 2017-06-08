@@ -80,6 +80,8 @@ class Course {
      * @ORM\JoinColumn(name="carousel_id", referencedColumnName="id")
      */
     private $carousel;
+    
+    public $addedByLoggedUser;
 
     public function __construct() {
         $this->users = new ArrayCollection();
