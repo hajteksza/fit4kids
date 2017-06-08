@@ -23,7 +23,12 @@
                             <td>{{ course.title }}</td>
                             <td>{{ course.description }}</td>
                             <td>{{ course.price }}</td>
-                            <td>{{ course.likes }}</td>
+                            <td>
+                                <span>{{ course.likes }}</span>
+                                <a href="/course/like" class="likeLink" data-id="{{course.id}}">
+                                    <img src="/Assets/images/heart.png" alt="polub" height="25" width="25">
+                                </a>
+                            </td>
                             <td> 
                                    {%if course.addedByLoggedUser == 'true'%}
                                         <a class="btn btn-info disabled" href="#">Zakupiony</a>
@@ -43,3 +48,7 @@
     </div>
 
 {% endblock %}
+
+{%block javascripts %}
+    <script src="{{asset("bundles/app/js/likes.js")}}"></script>
+{%endblock%}

@@ -48,7 +48,7 @@ class Course {
      *
      * @ORM\Column(name="likes", type="integer")
      */
-    private $likes;
+    public $likes;
 
     /**
      * @ORM\Column(name="picture", type="string", length=255)
@@ -63,7 +63,7 @@ class Course {
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="likes")
      */
-    protected $likedBy;
+    public $likedBy;
 
     /**
      * @ORM\ManyToMany(targetEntity="Basket", inversedBy="courses")
@@ -330,7 +330,10 @@ class Course {
     public function getPicture() {
         return $this->picture;
     }
-
+    
+    public function getLikeCount(){
+        return count($this->likedBy);
+    }
 
     /**
      * Set carousel
