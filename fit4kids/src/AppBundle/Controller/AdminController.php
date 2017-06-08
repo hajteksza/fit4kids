@@ -16,9 +16,18 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class AdminController extends Controller {
 
+    /**
+     * @Route("/superadmin/")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     */
+    public function showSuperAdminPanelAction(){
+        return new Response('ok');
+    }
+    
     /**
      * @Route("/admin/")
      * @Security("has_role('ROLE_ADMIN')")
@@ -68,8 +77,36 @@ class AdminController extends Controller {
     }
 
     /**
+     * @Route("/admin/user/")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function showAdminUserAction() {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $users = $repo->findAll();
+        return $this->render('AppBundle:Admin:show_admin_user.html.twig', array(
+                    'users' => $users
+        ));
+    }
+
+    /**
+     * @Route("/admin/basket/")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function showAdminBasketAction() {
+        $repoBasket = $this->getDoctrine()->getRepository('AppBundle:Basket');
+        $repoUser = $this->getDoctrine()->getRepository('AppBundle:Basket');
+        $users = $repoUser->findAll();
+        $baskets = $repoBasket->findAll();
+        return $this->render('AppBundle:Admin:show_admin_basket.html.twig', array(
+                    'baskets' => $baskets,
+                    'users' => $users
+        ));
+    }
+
+    /**
      * @Route("/admin/carousel/add/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAddCarouselFormAction() {
         $carousel = new Carousel();
@@ -90,6 +127,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/carousel/add/")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function addCarouselAction(Request $request) { {
             $carousel = new Carousel();
@@ -132,6 +170,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/carousel/edit/{id}/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showEditCarouselFormAction($id) {
 
@@ -155,6 +194,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/carousel/edit/{id}/")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editCarouselAction(Request $request, $id) { {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Carousel');
@@ -198,6 +238,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/carousel/delete/{id}/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showDeleteCarouselFormAction($id) {
 
@@ -213,6 +254,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/movie/add/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAddMovieFormAction() {
         $movie = new Movie();
@@ -234,6 +276,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/movie/add/")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function addMovieAction(Request $request) { {
             $movie = new Movie();
@@ -251,7 +294,7 @@ class AdminController extends Controller {
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $file = $movie->getPath();
-                $newPath = $file->move("web/Assets/movies/", $file->getClientOriginalName());
+                $newPath = $file->move("Assets/movies/", $file->getClientOriginalName());
                 $movie->setPath($newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($movie);
@@ -264,6 +307,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/movie/edit/{id}/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showEditMovieFormAction($id) {
         $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
@@ -286,6 +330,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/movie/edit/{id}/")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editMovieAction(Request $request, $id) { {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Movie');
@@ -303,7 +348,7 @@ class AdminController extends Controller {
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $file = $movie->getPath();
-                $newPath = $file->move("web/Assets/movies/", $file->getClientOriginalName());
+                $newPath = $file->move("Assets/movies/", $file->getClientOriginalName());
                 $movie->setPath($newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($movie);
@@ -316,6 +361,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/movie/delete/{id}/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteMovieAction($id) {
 
@@ -331,6 +377,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/course/add/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAddCourseFormAction() {
         $course = new Course();
@@ -350,6 +397,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/course/add/")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function addCourseAction(Request $request) { {
             $course = new Course();
@@ -380,6 +428,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/course/edit/{id}/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showEditCourseFormAction($id) {
         $repo = $this->getDoctrine()->getRepository('AppBundle:Course');
@@ -400,6 +449,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/course/edit/{id}/")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editCourseAction(Request $request, $id) { {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Course');
@@ -414,9 +464,9 @@ class AdminController extends Controller {
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
-                $file = $course->getPath();
+                $file = $course->getPicture();
                 $newPath = $file->move("web/Assets/images/", $file->getClientOriginalName());
-                $course->setPath($newPath);
+                $course->setPicture($newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($course);
                 $em->flush();
@@ -428,6 +478,7 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/course/delete/{id}/")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteCourseAction($id) {
 
@@ -435,6 +486,76 @@ class AdminController extends Controller {
         $course = $repo->find($id);
         $em = $this->getDoctrine()->getManager();
         $em->remove($course);
+        $em->flush();
+
+        return new Response('Usunięto');
+    }
+
+    /**
+     * @Route("/admin/user/edit/{id}/")
+     * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function showEditUserFormAction($id) {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $user = $repo->find($id);
+        $form = $this->createFormBuilder($user)
+                ->add('username', TextType::class)
+                ->add('points', IntegerType::class)
+             /*   ->add('courses', CollectionType::class, array(
+                    'entry_type' => CollectionType::class,
+                    'entry_options' => array(
+                        'class' => 'AppBundle:Course',
+                        'choice_label' => 'title'
+                    )
+                )) */
+                ->add('Edytuj', SubmitType::class)
+                ->getForm();
+
+        return $this->render('AppBundle:Admin:basic_form.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/user/edit/{id}/")
+     * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function editUserAction(Request $request, $id) { {
+            $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+            $user = $repo->find($id);
+            $form = $this->createFormBuilder($user)
+                    ->add('username', TextType::class)
+                    ->add('points', IntegerType::class)
+          /*          ->add('courses', EntityType::class, array(
+                            'class' => 'AppBundle:Course',
+                            'choice_label' => 'title' 
+                    )) */
+                    ->add('Edytuj', SubmitType::class)
+                    ->getForm();
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+            }
+        }
+        return new Response('Edytowano');
+    }
+
+    /**
+     * @Route("/admin/user/delete/{id}/")
+     * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function deleteUserAction($id) {
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $user = $repo->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
         $em->flush();
 
         return new Response('Usunięto');
