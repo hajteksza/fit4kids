@@ -61,8 +61,12 @@ class AdminController extends Controller
      */
     public function showAdminPanelAction()
     {
-        return $this->render('AppBundle:Admin:show_admin_panel.html.twig', array(// ...
-        ));
+        try {
+            return $this->render('AppBundle:Admin:show_admin_panel.html.twig', array(// ...
+            ));
+        } catch (\Exception $e) {
+            return $this->render('AppBundle:Admin:access_denied.html.twig');
+        }
     }
 
     /**
@@ -115,22 +119,6 @@ class AdminController extends Controller
         $repo = $this->getDoctrine()->getRepository('AppBundle:User');
         $users = $repo->findAll();
         return $this->render('AppBundle:Admin:show_admin_user.html.twig', array(
-            'users' => $users
-        ));
-    }
-
-    /**
-     * @Route("/admin/basket/")
-     * @Security("has_role('ROLE_ADMIN')")
-     */
-    public function showAdminBasketAction()
-    {
-        $repoBasket = $this->getDoctrine()->getRepository('AppBundle:Basket');
-        $repoUser = $this->getDoctrine()->getRepository('AppBundle:Basket');
-        $users = $repoUser->findAll();
-        $baskets = $repoBasket->findAll();
-        return $this->render('AppBundle:Admin:show_admin_basket.html.twig', array(
-            'baskets' => $baskets,
             'users' => $users
         ));
     }
@@ -623,7 +611,7 @@ class AdminController extends Controller
         }
     }
 
-    /**
+    /**<h1 style="margin-bottom: 30px">Zarejestruj się:</h1>
      * @Route("/admin/user/delete/{id}/")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
