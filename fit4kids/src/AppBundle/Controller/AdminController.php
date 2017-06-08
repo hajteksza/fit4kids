@@ -295,7 +295,7 @@ class AdminController extends Controller {
             if ($form->isSubmitted() && $form->isValid()) {
                 $file = $movie->getPath();
                 $newPath = $file->move("Assets/movies/", $file->getClientOriginalName());
-                $movie->setPath($newPath);
+                $movie->setPath("/".$newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($movie);
                 $em->flush();
@@ -348,7 +348,7 @@ class AdminController extends Controller {
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $file = $movie->getPath();
-                $newPath = $file->move("Assets/movies/", $file->getClientOriginalName());
+                $newPath = $file->move("/Assets/movies/", $file->getClientOriginalName());
                 $movie->setPath($newPath);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($movie);
