@@ -101,9 +101,15 @@ class AdminController extends Controller {
      * @Route("/admin/")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function showAdminPanelAction() {
-        return $this->render('AppBundle:Admin:show_admin_panel.html.twig', array(// ...
-        ));
+
+    public function showAdminPanelAction()
+    {
+        try {
+            return $this->render('AppBundle:Admin:show_admin_panel.html.twig', array(// ...
+            ));
+        } catch (\Exception $e) {
+            return $this->render('AppBundle:Admin:access_denied.html.twig');
+        }
     }
 
     /**
@@ -163,6 +169,7 @@ class AdminController extends Controller {
     }
 
     /**
+
      * @Route("/admin/basket/")
      * @Security("has_role('ROLE_ADMIN')")
      */
@@ -178,6 +185,7 @@ class AdminController extends Controller {
     }
 
     /**
+
      * @Route("/admin/carousel/add/")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
@@ -653,7 +661,7 @@ class AdminController extends Controller {
         }
     }
 
-    /**
+    /**<h1 style="margin-bottom: 30px">Zarejestruj się:</h1>
      * @Route("/admin/user/delete/{id}/")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
