@@ -1,5 +1,5 @@
 $(function(){
-var likeLinks = $(".likeLink")
+    var likeLinks = $(".likeLink")
 
     likeLinks.click(function(e){
         var link = this;
