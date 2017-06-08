@@ -27,10 +27,32 @@ class AdminController extends Controller
     public function showSuperAdminPanelAction()
     {
         $repo = $this->getDoctrine()->getRepository('AppBundle:User');
-        $users = $repo->findAll();
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $admins = $qb->select('u')
+                ->from('AppBundle:User', 'u')
+                ->where('u.roles LIKE :roles')
+                ->setParameter('roles', '%ADMIN%')
+                ->getQuery()
+                ->getResult();
         return $this->render('AppBundle:Admin:show_super_admin_panel.html.twig', array(
-            'users' => $users
+                    'admins' => $admins
         ));
+    }
+
+    /**
+     * @Route("/superadmin/delete/{id}/")
+     * @Method("GET")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     */
+    public function deleteAdminAction($id) {
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:User');
+        $user = $repo->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        return new Response('Usunięto');
     }
 
     /**
@@ -550,6 +572,7 @@ class AdminController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('AppBundle:User');
         $user = $repo->find($id);
+        
         $form = $this->createFormBuilder($user)
             ->add('username', TextType::class)
             ->add('points', IntegerType::class)

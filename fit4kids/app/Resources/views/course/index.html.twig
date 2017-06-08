@@ -24,12 +24,13 @@
                             <td>{{ course.description }}</td>
                             <td>{{ course.price }}</td>
                             <td>{{ course.likes }}</td>
-                            <td>
-                                <a class="btn btn-default" 
-                                   {%if course.hideAddButton == 'true'%}
-                                       style="visibility: hidden;"
+                            <td> 
+                                   {%if course.addedByLoggedUser == 'true'%}
+                                        <a class="btn btn-info disabled" href="#">Zakupiony</a>
                                    {%endif%}
-                                   href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
+                                   {%if course.addedByLoggedUser == 'false'%}
+                                        <a class="btn btn-default" href="addToBasket/{{ course.id }}">Dodaj do koszyka</a>
+                                   {%endif%}
                             </td>
                         </tr>
                     {% endfor %}
