@@ -58,6 +58,37 @@ class CourseController extends Controller
             'courses' => $courses
         ));
     }
+    
+        
+    /**
+    * @Route("/like", name="course_like")
+    * 
+    */
+    public function like(Request $req){
+        if($req->isMethod('GET') && !empty($req->query->get('id'))){
+            $id = $req->query->get('id');
+            $course = $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course')->find($id);
+            $user = $this->getUser();
+            $likedBy=[];
+            foreach ($course->likedBy as $liker){
+                $likedBy[] = $liker;
+            }
+            if (!in_array($this->getUser(), $likedBy)){
+                $course -> addLikedBy($this->getUser());
+                $course -> setLikes ($course->likes + 1);
+                $user ->addLike($course);
+                $this->getDoctrine()->getManager()->flush(); 
+                return new \Symfony\Component\HttpFoundation\JsonResponse(["likes"=>$course->likes]); 
+            }
+            else{
+                $course -> removeLikedBy($this->getUser());
+                $course -> setLikes ($course->likes - 1);
+                $user ->removeLike($course);
+                $this->getDoctrine()->getManager()->flush(); 
+                return new \Symfony\Component\HttpFoundation\JsonResponse(["likes"=>$course->likes]); 
+            }
+        }    
+    }
 
     /**
      * Finds and displays a course entity.
@@ -76,15 +107,14 @@ class CourseController extends Controller
     }
 
     /**
-     * @Route("/pay/{id}", name="course_pay")
-     */
+    * @Route("/pay/{id}", name="course_pay")
+    */
     public function payAction(Request $req, $id)
     {
         try {
             $user = $this->getUser();
             $basket = $user->getBasket();
-            $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course');
-            $course = $courseRepo->find($id);
+            $course = $this->getDoctrine()->getRepository('AppBundle:Course')->find($id);
             $pointsAfterPay = intval($user->getPoints()) - intval($course->getPrice());
             if ($pointsAfterPay >= 0) {
                 $basket = $user->getBasket();
@@ -107,6 +137,8 @@ class CourseController extends Controller
             return $this->render('course/buy_database_error.html.twig');
         }
     }
+
+    
     public function findLoggedUserBasket()
     {
         $user = $this->getUser();
