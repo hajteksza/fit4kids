@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Movie controller.
@@ -23,6 +24,9 @@ class MovieController extends Controller
     {   
         $em = $this->getDoctrine()->getManager();
         $course = $em->getRepository('AppBundle:Course')->find($id);
+        if($course == null){
+            return $this->render('/course/course_not_found.html.twig');
+        }
         $courseTitle = $course->getTitle();
         $user = $this->getUser();
         $userCourses = [];
@@ -30,6 +34,7 @@ class MovieController extends Controller
             $userCourses[] = $userCourse;
         }
         if (in_array ($course , $userCourses)){
+            $movies=[];
             $i=0;
                 foreach($course->getMovies() as $movie){
                     $movies[$i]['id'] = $movie->getId();
@@ -40,10 +45,17 @@ class MovieController extends Controller
                     $movies[$i]['path'] = $movie->getPath();
                     $i++;
                 }
+            if(empty($movies)){
+                $this->addFlashbag($req, 'danger', 'w tym kursie nie ma żadnych filmów!');
+            }
             return $this->render('movie/course_movies.html.twig', array(
                 'movies' => $movies,
                 'courseTitle' => $courseTitle
             ));
+        }
+        else{
+            $this->addFlashbag($req, 'danger', 'ten kurs nie jest zakupiony!');
+            return new RedirectResponse($this->generateUrl('course_index', array()));
         }
     }
     
@@ -58,6 +70,11 @@ class MovieController extends Controller
             $moviePath = $movieRepo->find($id)->getPath();
             return new \Symfony\Component\HttpFoundation\JsonResponse(["path"=>$moviePath]);
         }        
+    }
+    public function addFlashbag($req, $type, $message){
+        $req->getSession()
+        ->getFlashBag()
+        ->add($type, $message);
     }
 
 }
