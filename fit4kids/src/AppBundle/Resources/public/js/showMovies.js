@@ -1,5 +1,19 @@
 $(function(){
-$("#videoDiv").css("display","none");
+$("#mainVideoDiv").css({
+                    'height' : '500px',
+                    'overflow-y' : 'hidden',
+                    });
+$("#mainTableDiv").css({
+                    'height' : '500px',
+                    'overflow-y' : 'scroll',
+                    'background-color' : 'azure',
+                    });
+$(".videoLink").css({
+                    'font-size' : '30px',
+                    });
+$("td").css({
+                    'width' : '350px',
+                    });
 var videoLinks = $(".videoLink")
 
     videoLinks.click(function(e){
@@ -12,9 +26,6 @@ var videoLinks = $(".videoLink")
           data: {id:id}
         })
         .done(function(d){
-            if($("#videoDiv").css("display")=="none"){
-                $("#videoDiv").css("display","block");
-            }
             $("#video").attr("src",d.path);
          })
         .fail(function (xhr, ajaxOptions, thrownError) {
