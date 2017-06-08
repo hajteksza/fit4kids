@@ -3,37 +3,46 @@
 {% block title %}AppBundle:Admin:showAdminPanel{% endblock %}
 
 {% block body %}
-    {% if is_granted %}
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                    </div>
+                    <div class="col-md-2" style="margin-bottom:30px;">
+                        <a href="/superadmin" class="btn btn-primary">Zarządzaj administratorami</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
 
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#carousel">Slider</a></li>
-        <li><a data-toggle="tab" href="#course">Kursy</a></li>
-        <li><a data-toggle="tab" href="#movie">Filmy</a></li>
-        <li><a data-toggle="tab" href="#user">Użytkownicy</a></li>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#carousel">Slider</a></li>
+            <li><a data-toggle="tab" href="#course">Kursy</a></li>
+            <li><a data-toggle="tab" href="#movie">Filmy</a></li>
+            <li><a data-toggle="tab" href="#user">Użytkownicy</a></li>
 
-    </ul>
+        </ul>
 
-    <div class="table tab-content" style="margin-top:10px">
-        <div id="carousel" class="tab-pane fade in active" style="margin-top: 10px;">
-            {{ render(controller(
+        <div class="table tab-content" style="margin-top:10px">
+            <div id="carousel" class="tab-pane fade in active" style="margin-top: 10px;">
+                {{ render(controller(
                 'AppBundle:Admin:showAdminCarousel'
                 )) }}
-        </div>
-        <div id="course" class="tab-pane fade">
-            {{ render(controller(
+            </div>
+            <div id="course" class="tab-pane fade">
+                {{ render(controller(
                 'AppBundle:Admin:showAdminCourse'
                 )) }}
-        </div>
-        <div id="movie" class="tab-pane fade">
-            {{ render(controller(
+            </div>
+            <div id="movie" class="tab-pane fade">
+                {{ render(controller(
                 'AppBundle:Admin:showAdminMovie'
                 )) }}
-        </div>
-        <div id="user" class="tab-pane fade">
-            {{ render(controller(
+            </div>
+            <div id="user" class="tab-pane fade">
+                {{ render(controller(
                 'AppBundle:Admin:showAdminUser'
                 )) }}
+            </div>
         </div>
-    </div>
-    {%endif%}
 {% endblock %}
