@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class RatingRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function checkIfUserRatedMovie($userId, $movieId){
+        $query =$this->getEntityManager()->createQuery(''
+                . 'SELECT r FROM AppBundle:Rating r WHERE user_id = :userId AND movie_id = :movieId')
+                ->setParameter('userId', $userId);
+                ->setParameter('movieId', $movieId);
+        return $query->getResult();
+    }
 }
