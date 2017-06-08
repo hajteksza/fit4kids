@@ -23,7 +23,8 @@ class Rating
 
     /**
      * @var int
-     *
+     * min = 0
+     * max = 5
      * @ORM\Column(name="rating", type="integer")
      */
     private $rating;
