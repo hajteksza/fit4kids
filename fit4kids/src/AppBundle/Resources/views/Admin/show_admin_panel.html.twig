@@ -3,13 +3,13 @@
 {% block title %}AppBundle:Admin:showAdminPanel{% endblock %}
 
 {% block body %}
+    {% if is_granted %}
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#carousel">Slider</a></li>
         <li><a data-toggle="tab" href="#course">Kursy</a></li>
         <li><a data-toggle="tab" href="#movie">Filmy</a></li>
         <li><a data-toggle="tab" href="#user">Użytkownicy</a></li>
-        <li><a data-toggle="tab" href="#basket">Koszyki</a></li>
 
     </ul>
 
@@ -32,11 +32,6 @@
         <div id="user" class="tab-pane fade">
             {{ render(controller(
                 'AppBundle:Admin:showAdminUser'
-                )) }}
-        </div>
-        <div id="basket" class="tab-pane fade">
-            {{ render(controller(
-                'AppBundle:Admin:showAdminBasket'
                 )) }}
         </div>
     </div>
