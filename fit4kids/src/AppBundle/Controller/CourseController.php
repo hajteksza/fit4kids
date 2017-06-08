@@ -28,15 +28,18 @@ class CourseController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $allCourses = $em->getRepository('AppBundle:Course')->findAll();
-//        $userCourses = [];
-//        foreach ($user->getCourses() as $userCourse){
-//            $userCourses[] = $userCourse;
-//        } 
-//        foreach ($allCourses as $course){
-//            if (in_array($course, $userCourses)){
-//                $course['hideAddButton'] = 'true';
-//            }
-//        }
+        $userCourses = [];
+        foreach ($user->getCourses() as $userCourse){
+            $userCourses[] = $userCourse;
+        } 
+        foreach ($allCourses as $course){
+            if (in_array($course, $userCourses)){
+                $course->addedByLoggedUser = 'true';
+            }
+            else{
+                $course->addedByLoggedUser = 'false';
+            }
+        }
 
         return $this->render('course/index.html.twig', array(
             'courses' => $allCourses,

@@ -25,7 +25,7 @@ class Course {
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
@@ -80,6 +80,8 @@ class Course {
      * @ORM\JoinColumn(name="carousel_id", referencedColumnName="id")
      */
     private $carousel;
+    
+    public $addedByLoggedUser;
 
     public function __construct() {
         $this->users = new ArrayCollection();
