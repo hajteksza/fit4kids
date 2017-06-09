@@ -20,9 +20,7 @@ class RatingController extends Controller
     {
         if ($req ->isMethod('POST')){
             $movieId = $req->request->get('movieId');
-            var_dump($movieId);
             $value = $req->request->get('value');
-            var_dump($value);
             $user = $this->getUser();
             $movie = $this->getDoctrine()->getRepository('AppBundle:Movie')->find($movieId);
             
