@@ -80,4 +80,35 @@ fos_user:
     registration:
             confirmation:
                 enabled: false
-                
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "pl_PL"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button"
+        twitter:
+            url:            null
+            locale:         "pl"
+            message:        "chcę się tym podzielić"
+            text:           "Tweet"
+            via:            "L'Equipe cartedevisitevirtuelle.fr"
+            tag:            "ttot"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:            
+            url:            null
+            locale:         "pl_PL"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links: 
+        facebook:           "https://www.facebook.com/DajemyDzieciomSile/"
+        googleplus:         "https://plus.google.com/105931415830389032796"
+    theme:                  'default' # optional
