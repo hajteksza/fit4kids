@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Points:addPoints{% endblock %}
+
+{% block body %}
+    <div class="alert alert-success">
+        Dodano {{ value }} punktów do twojego portfela
+        <a href="/profile">Wróć do profilu użytkownika</a>
+    </div>
+{% endblock %}
