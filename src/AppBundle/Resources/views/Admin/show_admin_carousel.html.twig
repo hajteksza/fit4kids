@@ -1,0 +1,39 @@
+
+
+{% block body %}
+    <div style="margin-top:20px; margin-bottom: 20px">
+    <a class="btn btn-success" href="/admin/carousel/add">Dodaj nowy element slidera</a>
+    </div>
+    <table class="table table-bordered table-hover text-center">
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Obrazek
+            </th>
+            <th>
+                Kurs
+            </th>
+            <th>
+                Opcje
+            </th>
+            {%for carousel in carousels %}
+            <tr>
+                <td>
+                    {{carousel.name}}
+                </td>
+                <td>
+                    <img src="{{ asset(carousel.picture) }}" alt="image" height="150" width="200">
+                </td>
+                <td>
+                    {{carousel.course.title}}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/carousel/edit/{{carousel.id}}/">Edytuj</a>
+                    <a class="btn btn-danger" href="/admin/carousel/delete/{{carousel.id}}/">Usuń</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}
