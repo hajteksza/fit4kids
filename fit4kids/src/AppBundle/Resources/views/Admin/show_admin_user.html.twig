@@ -50,7 +50,7 @@
                 <td>
                     {%if user.likes is not null %}
                         {%for like in user.likes%}
-                            {{like.courseId}} <br>
+                             {{like.title}}<br>
                         {%endfor%}
                     {%endif%}
                 </td>
