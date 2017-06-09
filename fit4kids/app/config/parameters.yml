@@ -7,6 +7,6 @@ parameters:
     database_password: mEbFYTcyFURnbc+d0_p9xBW+
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: test@test.pl
-    mailer_password: fejkowe
+    mailer_user: null
+    mailer_password: null
     secret: 594860c97c816aa9d23c0c7e0e5d887252ac6a66
