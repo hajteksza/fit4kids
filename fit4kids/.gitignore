@@ -3,7 +3,6 @@
 /web/bundles
 
 /.web-server-pid
-/app/config/parameters.yml
 /build/
 /phpunit.xml
 /var/*
