@@ -33,3 +33,12 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app_user.registration_complete:
+        class: AppBundle\EventListener\RegistrationCompleteListener
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.security.access_denied_handler:
+        class: AppBundle\Security\AccessDeniedHandler
+        arguments: ["@templating"]

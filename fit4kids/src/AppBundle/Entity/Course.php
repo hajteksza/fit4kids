@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="course")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CourseRepository")
  */
-class Course
-{
+class Course {
+
     /**
      * @var int
      *
@@ -48,46 +48,52 @@ class Course
      *
      * @ORM\Column(name="likes", type="integer")
      */
-    private $likes;
+    public $likes;
+
+    /**
+     * @ORM\Column(name="picture", type="string", length=255)
+     */
+    private $picture;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="courses")
      */
-
     protected $users;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="likes")
      */
-
-    protected $likedBy;
+    public $likedBy;
 
     /**
      * @ORM\ManyToMany(targetEntity="Basket", inversedBy="courses")
      */
-
     protected $baskets;
 
     /**
      * @ORM\OneToMany(targetEntity="Movie", mappedBy="course")
      */
-
     protected $movies;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Carousel", inversedBy="course")
+     * @ORM\JoinColumn(name="carousel_id", referencedColumnName="id")
+     */
+    private $carousel;
+    
+    public $addedByLoggedUser;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->users = new ArrayCollection();
         $this->movies = new ArrayCollection();
     }
-
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -98,8 +104,7 @@ class Course
      *
      * @return Course
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -110,8 +115,7 @@ class Course
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -122,8 +126,7 @@ class Course
      *
      * @return Course
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -134,8 +137,7 @@ class Course
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -146,8 +148,7 @@ class Course
      *
      * @return Course
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
 
         return $this;
@@ -158,8 +159,7 @@ class Course
      *
      * @return int
      */
-    public function getPrice()
-    {
+    public function getPrice() {
         return $this->price;
     }
 
@@ -170,8 +170,7 @@ class Course
      *
      * @return Course
      */
-    public function setLikes($likes)
-    {
+    public function setLikes($likes) {
         $this->likes = $likes;
 
         return $this;
@@ -182,8 +181,7 @@ class Course
      *
      * @return int
      */
-    public function getLikes()
-    {
+    public function getLikes() {
         return $this->likes;
     }
 
@@ -194,8 +192,7 @@ class Course
      *
      * @return Course
      */
-    public function addUser(\AppBundle\Entity\User $user)
-    {
+    public function addUser(\AppBundle\Entity\User $user) {
         $this->users[] = $user;
 
         return $this;
@@ -206,8 +203,7 @@ class Course
      *
      * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\User $user)
-    {
+    public function removeUser(\AppBundle\Entity\User $user) {
         $this->users->removeElement($user);
     }
 
@@ -216,8 +212,7 @@ class Course
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
-    {
+    public function getUsers() {
         return $this->users;
     }
 
@@ -228,8 +223,7 @@ class Course
      *
      * @return Course
      */
-    public function addLikedBy(\AppBundle\Entity\User $likedBy)
-    {
+    public function addLikedBy(\AppBundle\Entity\User $likedBy) {
         $this->likedBy[] = $likedBy;
 
         return $this;
@@ -240,8 +234,7 @@ class Course
      *
      * @param \AppBundle\Entity\User $likedBy
      */
-    public function removeLikedBy(\AppBundle\Entity\User $likedBy)
-    {
+    public function removeLikedBy(\AppBundle\Entity\User $likedBy) {
         $this->likedBy->removeElement($likedBy);
     }
 
@@ -250,8 +243,7 @@ class Course
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLikedBy()
-    {
+    public function getLikedBy() {
         return $this->likedBy;
     }
 
@@ -262,8 +254,7 @@ class Course
      *
      * @return Course
      */
-    public function addBasket(\AppBundle\Entity\Basket $basket)
-    {
+    public function addBasket(\AppBundle\Entity\Basket $basket) {
         $this->baskets[] = $basket;
 
         return $this;
@@ -274,8 +265,7 @@ class Course
      *
      * @param \AppBundle\Entity\Basket $basket
      */
-    public function removeBasket(\AppBundle\Entity\Basket $basket)
-    {
+    public function removeBasket(\AppBundle\Entity\Basket $basket) {
         $this->baskets->removeElement($basket);
     }
 
@@ -284,8 +274,7 @@ class Course
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBaskets()
-    {
+    public function getBaskets() {
         return $this->baskets;
     }
 
@@ -296,8 +285,7 @@ class Course
      *
      * @return Course
      */
-    public function addMovie(\AppBundle\Entity\Movie $movie)
-    {
+    public function addMovie(\AppBundle\Entity\Movie $movie) {
         $this->movies[] = $movie;
 
         return $this;
@@ -308,8 +296,7 @@ class Course
      *
      * @param \AppBundle\Entity\Movie $movie
      */
-    public function removeMovie(\AppBundle\Entity\Movie $movie)
-    {
+    public function removeMovie(\AppBundle\Entity\Movie $movie) {
         $this->movies->removeElement($movie);
     }
 
@@ -318,8 +305,57 @@ class Course
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMovies()
-    {
+    public function getMovies() {
         return $this->movies;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Course
+     */
+    public function setPicture($picture) {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture() {
+        return $this->picture;
+    }
+    
+    public function getLikeCount(){
+        return count($this->likedBy);
+    }
+
+    /**
+     * Set carousel
+     *
+     * @param \AppBundle\Entity\Carousel $carousel
+     *
+     * @return Course
+     */
+    public function setCarousel(\AppBundle\Entity\Carousel $carousel = null)
+    {
+        $this->carousel = $carousel;
+
+        return $this;
+    }
+
+    /**
+     * Get carousel
+     *
+     * @return \AppBundle\Entity\Carousel
+     */
+    public function getCarousel()
+    {
+        return $this->carousel;
     }
 }

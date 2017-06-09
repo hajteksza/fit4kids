@@ -1,0 +1,65 @@
+{% block body %}
+    <div style="margin-top: 40px">
+    </div>
+    <table class="table table-bordered table-hover text-center">
+        <tr>
+            <th>
+                Nazwa użytkownika
+            </th>
+            <th>
+                Adres e-mail
+            </th>
+            <th>
+                Ostatnie logowanie
+            </th>
+            <th>
+                Punkty
+            </th>
+            <th>
+                Kursy
+            </th>
+            <th>
+                Polubienia
+            </th>      
+            <th>
+                Opcje
+            </th>
+            {%for user in users %}
+            <tr>
+                <td>
+                    {{user.username}}
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+                <td>
+                    {%if user.lastLogin is not null%}
+                        {{user.lastLogin|date('Y-m-d H:m:s')}}
+                    {%endif%}
+                </td>
+                <td>
+                    {{user.points}}
+                </td>
+                <td>
+                    {%if user.courses is not null%}
+                        {%for course in user.courses%}
+                            {{course.title}} <br>
+                        {%endfor%}
+                    {%endif%}
+                </td>
+                <td>
+                    {%if user.likes is not null %}
+                        {%for like in user.likes%}
+                             {{like.title}}<br>
+                        {%endfor%}
+                    {%endif%}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/admin/user/edit/{{user.id}}/">Edytuj</a>
+                    <a class="btn btn-danger" href="/admin/user/delete/{{user.id}}/">Usuń</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}
+

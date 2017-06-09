@@ -1,3 +1,7 @@
+
+*~
+/web/bundles
+
 /.web-server-pid
 /app/config/parameters.yml
 /build/
@@ -16,4 +20,8 @@
 /vendor/
 /web/bundles/
 /web/bootstrap
+<<<<<<< HEAD
 /.idea
+=======
+/.idea
+>>>>>>> a3b222bcee889206ca4e1c823161205af07b8b1e

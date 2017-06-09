@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Course;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Course controller.
@@ -23,38 +26,68 @@ class CourseController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $courses = $em->getRepository('AppBundle:Course')->findAll();
-
-        return $this->render('course/index.html.twig', array(
-            'courses' => $courses,
-        ));
-    }
-
-    /**
-     * Creates a new course entity.
-     *
-     * @Route("/new", name="course_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $course = new Course();
-        $form = $this->createForm('AppBundle\Form\CourseType', $course);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($course);
-            $em->flush();
-
-            return $this->redirectToRoute('course_show', array('id' => $course->getId()));
+        $user = $this->getUser();
+        $allCourses = $em->getRepository('AppBundle:Course')->findAll();
+        $userCourses = [];
+        foreach ($user->getCourses() as $userCourse){
+            $userCourses[] = $userCourse;
+        } 
+        foreach ($allCourses as $course){
+            if (in_array($course, $userCourses)){
+                $course->addedByLoggedUser = 'true';
+            }
+            else{
+                $course->addedByLoggedUser = 'false';
+            }
         }
 
-        return $this->render('course/new.html.twig', array(
-            'course' => $course,
-            'form' => $form->createView(),
+        return $this->render('course/index.html.twig', array(
+            'courses' => $allCourses,
         ));
+    }
+    
+    /**
+     * @Route("/myCourses", name="my_courses")
+     * @Method({"GET", "POST"})
+     */
+    public function myCoursesAction(Request $request)
+    {
+        $user = $this->getUser();
+        $courses = $user->getCourses();
+        return $this->render('course/my_courses.html.twig', array(
+            'courses' => $courses
+        ));
+    }
+    
+        
+    /**
+    * @Route("/like", name="course_like")
+    * 
+    */
+    public function like(Request $req){
+        if($req->isMethod('GET') && !empty($req->query->get('id'))){
+            $id = $req->query->get('id');
+            $course = $courseRepo = $this->getDoctrine()->getRepository('AppBundle:Course')->find($id);
+            $user = $this->getUser();
+            $likedBy=[];
+            foreach ($course->likedBy as $liker){
+                $likedBy[] = $liker;
+            }
+            if (!in_array($this->getUser(), $likedBy)){
+                $course -> addLikedBy($this->getUser());
+                $course -> setLikes ($course->likes + 1);
+                $user ->addLike($course);
+                $this->getDoctrine()->getManager()->flush(); 
+                return new \Symfony\Component\HttpFoundation\JsonResponse(["likes"=>$course->likes]); 
+            }
+            else{
+                $course -> removeLikedBy($this->getUser());
+                $course -> setLikes ($course->likes - 1);
+                $user ->removeLike($course);
+                $this->getDoctrine()->getManager()->flush(); 
+                return new \Symfony\Component\HttpFoundation\JsonResponse(["likes"=>$course->likes]); 
+            }
+        }    
     }
 
     /**
@@ -74,63 +107,75 @@ class CourseController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing course entity.
-     *
-     * @Route("/{id}/edit", name="course_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Course $course)
+    * @Route("/pay/{id}", name="course_pay")
+    */
+    public function payAction(Request $req, $id)
     {
-        $deleteForm = $this->createDeleteForm($course);
-        $editForm = $this->createForm('AppBundle\Form\CourseType', $course);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('course_edit', array('id' => $course->getId()));
+        try {
+            $user = $this->getUser();
+            $basket = $user->getBasket();
+            $course = $this->getDoctrine()->getRepository('AppBundle:Course')->find($id);
+            $pointsAfterPay = intval($user->getPoints()) - intval($course->getPrice());
+            if ($pointsAfterPay >= 0) {
+                $basket = $user->getBasket();
+                $basket->removeCourse($course);
+                $course->removeBasket($basket);
+                $course->addUser($user);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($basket);
+                $em->persist($course);
+                $em->flush();
+                $user->addCourse($course);
+                $user->setPoints($pointsAfterPay);
+                $userManager = $this->get('fos_user.user_manager');
+                $userManager->updateUser($user);
+                return $this->render('course/buy.html.twig');
+            } else {
+                return $this->render('course/buy_error.html.twig');
+            }
+        } catch (\Exception $e) {
+            return $this->render('course/buy_database_error.html.twig');
         }
+    }
 
-        return $this->render('course/edit.html.twig', array(
-            'course' => $course,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+    
+    public function findLoggedUserBasket()
+    {
+        $user = $this->getUser();
+        return $user->getBasket();
     }
 
     /**
-     * Deletes a course entity.
-     *
-     * @Route("/{id}", name="course_delete")
-     * @Method("DELETE")
+     * @Route("/addToBasket/{id}")
      */
-    public function deleteAction(Request $request, Course $course)
-    {
-        $form = $this->createDeleteForm($course);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+    public function addToBasketAction($id)
+    {
+        try {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($course);
+            $repositoryCourse = $em->getRepository('AppBundle:Course');
+            $course = $repositoryCourse->findOneById($id);
+            $basket = $this->findLoggedUserBasket();
+            $course->addBasket($basket);
+            $basket->addCourse($course);
+            $em->persist($course);
+            $em->persist($basket);
             $em->flush();
+            return $this->render('/basket/addedToBasket.html.twig');
+        } catch ( \Exception $e) {
+            return $this->render('/basket/errorBasket.html.twig');
         }
-
-        return $this->redirectToRoute('course_index');
     }
 
-    /**
-     * Creates a form to delete a course entity.
-     *
-     * @param Course $course The course entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Course $course)
+    public function getTotalPrice($basket)
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('course_delete', array('id' => $course->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        $totalPrice = 0;
+        if (empty($basket->getCourses)) {
+            return null;
+        }
+        foreach ($basket->getCourses() as $course) {
+            $totalPrice += intval($course->getPrice());
+        }
+        return $totalPrice;
     }
 }

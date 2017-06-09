@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Course;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -214,6 +215,18 @@ class Movie
     public function getRatings()
     {
         return $this->ratings;
+    }
+    
+        public function getAverageRating()
+    {
+        if (count($this->ratings) == 0){
+            return 0;
+        }
+        $sum=0;
+        foreach ($this->getRatings() as $rating){
+            $sum += $rating->getRating();
+        }
+        return $sum/count($this->ratings);
     }
 
     /**
