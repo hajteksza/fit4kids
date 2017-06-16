@@ -1,12 +1,12 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: symfony-2urn.mysql.eu2.frbit.com
+    database_host: localhost
     database_port: null
-    database_name: symfony-2urn
-    database_user: symfony-2urn
-    database_password: mEbFYTcyFURnbc+d0_p9xBW+
+    database_name: fit4kids
+    database_user: root
+    database_password: coderslab
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_user: test@test.pl
+    mailer_password: testowe
     secret: 594860c97c816aa9d23c0c7e0e5d887252ac6a66

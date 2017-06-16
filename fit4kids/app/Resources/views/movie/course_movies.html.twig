@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+{% endblock %}
+
 {% block body %}
     <div style="margin-left: 30px; margin-right: 30px">
         {% if app.session.flashBag.has('success') %}
@@ -16,7 +20,7 @@
             {% endfor %}
         </div>
         {% endif %}
-        <div style="margin-right: 30px; margin-left: 30px">
+        <div class="courseMovies">
             <h2>{{ courseTitle }}</h2>
             <div class="row">
                 <div id="mainTableDiv" class="col-md-6">

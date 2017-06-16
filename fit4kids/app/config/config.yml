@@ -75,8 +75,8 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "test@test.pl"
-        sender_name: "tester"
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
     registration:
             confirmation:
                 enabled: false
