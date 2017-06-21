@@ -1,4 +1,23 @@
-fit4kids
-========
+# Fit4kids
 
-A Symfony project created on June 6, 2017, 10:52 am.
+# 1. Cel projektu
+
+- Celem projektu jest stworzenie platformy umożliwiającej zakup kursów w których są umieszczane odpowiednie do nich
+  filmy.
+- Platforma ma umożliwiać zakup filmów, oglądanie ich a także możliwość dodawania ich przez panel administracyjny.
+- Platforma będzie również implementować system ocen danych filmów obejrzanych pod kursem a także całych kursów
+- Każdy użytkownik będzie posiadać własne konto.
+
+# 2. Widoki aplikacji
+
+- Strona główna z menu nawigacyjnym oraz linkiem do logowania oraz opisem strony.
+- Strona kursów z możliwośćią listy wszystkich kursów i z odnośnikami do każdego pojedynczego kursu.
+- Strona pojedynczego kursu i możliwością dodania do koszyka (dla zalogowanych użytkownika). Oceny, lista filmów
+- Strona o mnie
+- Strona koszyka z listą kursów dodanych do koszyka oraz statusem kursów.
+- Strona moich kursów z możliwością obejrzenia zakupionych filmów. Po wybraniu filmu, strona przeładowuje się przez Ajax
+- Slider ze zdjęciami tytułowymi kursów.
+- Logowanie poprzez formularz w nagłówku strony.
+- Strona rejestracji.
+
+Created by Kajetan Szafran, Paweł Krakowiak, Anastassja Mikloss. All Rights Reserved.

@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class AdminController extends Controller
 {
 
@@ -705,7 +706,7 @@ class AdminController extends Controller
         }
     }
 
-    /**<h1 style="margin-bottom: 30px">Zarejestruj się:</h1>
+    /**
      * @Route("/admin/user/delete/{id}/")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")

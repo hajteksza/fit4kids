@@ -1,20 +1,24 @@
 {% extends "::base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+{% endblock %}
 
 {% block title %}AppBundle:Admin:showAdminPanel{% endblock %}
 
 {% block body %}
 
-        {% if is_granted("ROLE_SUPER_ADMIN") %}
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10">
-                    </div>
-                    <div class="col-md-2" style="margin-bottom:30px;">
-                        <a href="/superadmin" class="btn btn-primary">Zarządzaj administratorami</a>
-                    </div>
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2 title">
+                    <a href="/superadmin" class="btn btn-primary">Zarządzaj administratorami</a>
                 </div>
             </div>
-        {% endif %}
+        </div>
+    {% endif %}
+    <div class="course-movies">
 
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#carousel">Slider</a></li>
@@ -24,8 +28,8 @@
 
         </ul>
 
-        <div class="table tab-content" style="margin-top:10px">
-            <div id="carousel" class="tab-pane fade in active" style="margin-top: 10px;">
+        <div class="table tab-content menu">
+            <div id="carousel" class="tab-pane fade in active menu">
                 {{ render(controller(
                 'AppBundle:Admin:showAdminCarousel'
                 )) }}
@@ -46,4 +50,5 @@
                 )) }}
             </div>
         </div>
+    </div>
 {% endblock %}
