@@ -19,3 +19,5 @@
 - Slider ze zdjęciami tytułowymi kursów.
 - Logowanie poprzez formularz w nagłówku strony.
 - Strona rejestracji.
+
+Created by Kajetan Szafran, Paweł Krakowiak, Anastassja Mikloss. All Rights Reserved.
