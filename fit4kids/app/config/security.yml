@@ -19,6 +19,7 @@ security:
                 login_path: /
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
+            access_denied_handler: AppBundle\Security\AccessDeniedHandler
 
             logout:       true
             anonymous:    true

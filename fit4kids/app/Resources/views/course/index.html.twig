@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h3 style="margin-bottom:30px;">Lista Kursów: </h3>
+                <h3 class="title">Lista Kursów: </h3>
                 <div class="mainTableDiv">
                     <table class="table table-bordered">
                         <thead>
